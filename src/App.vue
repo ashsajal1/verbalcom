@@ -12,7 +12,7 @@ import { communicationSamples } from './lib/texts'
       <div v-motion-roll-top :duration="600" class="flex flex-col border shadow p-4 rounded my-4">
         <p class="font-extralight text-2xl">{{ sample.text }}</p>
         <p class="font-bold text-sm">{{ sample.category }}</p>
-        <Button class="mt-2">Practice</Button>
+        <Button class="mt-2 hover:to-violet-700 hover:from-teal-700">Practice</Button>
       </div>
     </div>
   </main>
