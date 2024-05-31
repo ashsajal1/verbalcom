@@ -5,8 +5,8 @@ import { communicationSamples } from './lib/texts'
 <template>
   <div v-for="sample in communicationSamples" :key="sample.text">
     <div v-motion-roll-visible-once-top :duration="600" class="flex flex-col border shadow p-4 rounded my-4">
-      <p>{{ sample.text }}</p>
-      <p>{{ sample.category }}</p>
+      <p class="font-extralight text-2xl">{{ sample.text }}</p>
+      <p class="font-bold text-sm">{{ sample.category }}</p>
     </div>
   </div>
 </template>
