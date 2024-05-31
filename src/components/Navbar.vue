@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <header class="flex items-center justify-between p-4">
+    <header class="flex items-center justify-between p-4 h-[80px] bg-white w-full z-10 border-b fixed top-0">
         <p class="text-3xl font-bold bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent">
             VerbalCom</p>
         <div>

@@ -6,7 +6,7 @@ import { communicationSamples } from './lib/texts'
 <template>
   <NavbarVue />
 
-  <main class="p-4">
+  <main class="p-4 mt-[80px]">
     <div v-for="sample in communicationSamples" :key="sample.text">
       <div v-motion-roll-top :duration="600" class="flex flex-col border shadow p-4 rounded my-4">
         <p class="font-extralight text-2xl">{{ sample.text }}</p>
