@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import Button from './components/Button.vue';
 import NavbarVue from './components/Navbar.vue'
 import { communicationSamples } from './lib/texts'
 </script>
@@ -11,6 +12,7 @@ import { communicationSamples } from './lib/texts'
       <div v-motion-roll-top :duration="600" class="flex flex-col border shadow p-4 rounded my-4">
         <p class="font-extralight text-2xl">{{ sample.text }}</p>
         <p class="font-bold text-sm">{{ sample.category }}</p>
+        <Button class="mt-2">Practice</Button>
       </div>
     </div>
   </main>
