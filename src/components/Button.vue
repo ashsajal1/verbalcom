@@ -8,7 +8,7 @@ const attrs = useAttrs()
 
 <template>
     <button v-motion :initial="{ scale: 0 }" :enter="{
-        scale: 1, transiton: {
+        scale: 1, transition: {
             type: 'spring',
         }
     }" :duration="600"
