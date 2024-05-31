@@ -1,8 +1,12 @@
 <script lang="ts" setup>
-
+import { communicationSamples } from './lib/texts'
 </script>
 
 <template>
-  <div v-motion :duration="700" :initial="{ opacity: 0, x: -1000 }" :enter="{ opacity: 1, x: 0 }" class="bg-blue-700">
-    Verbal Communication app</div>
+  <div v-for="sample in communicationSamples" :key="sample.text">
+    <div v-motion-roll-visible-once-top :duration="600" class="flex flex-col border shadow p-4 rounded my-4">
+      <p>{{ sample.text }}</p>
+      <p>{{ sample.category }}</p>
+    </div>
+  </div>
 </template>
