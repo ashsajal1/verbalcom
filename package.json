@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.10.0",
     "@vueuse/motion": "^2.2.3",
     "clsx": "^2.1.1",
     "primeicons": "^7.0.0",
