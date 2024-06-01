@@ -6,6 +6,6 @@ import NavbarVue from './components/Navbar.vue'
   <NavbarVue />
 
   <main class="p-4 mt-[80px]">
-    <RouterView />
+    <router-view />
   </main>
 </template>

@@ -3,7 +3,7 @@ import { MotionPlugin } from "@vueuse/motion";
 import App from "./App.vue";
 import "./style.css";
 import "primeicons/primeicons.css";
-import { createRouter, createMemoryHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
 
@@ -13,7 +13,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 });
 
