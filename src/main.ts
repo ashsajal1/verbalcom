@@ -6,10 +6,12 @@ import "primeicons/primeicons.css";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
+import Practice from "./pages/Practice.vue";
 
 const routes = [
   { path: "/", component: Home },
   { path: "/about", component: About },
+  { path: "/practice", component: Practice },
 ];
 
 const router = createRouter({
