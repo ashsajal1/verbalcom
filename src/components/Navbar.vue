@@ -21,9 +21,12 @@ onUnmounted(() => {
     <header
         class="flex items-center justify-between p-4 h-[80px] bg-white w-full z-10 border-b fixed top-0 transition-all duration-300"
         :class="{ 'backdrop-blur bg-opacity-60': isScrolled }">
-        <p class="md:text-3xl text-lg font-bold bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent">
-            VerbalCom
-        </p>
+        <router-link to="/">
+            <p
+                class="md:text-3xl text-lg font-bold bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent">
+                VerbalCom
+            </p>
+        </router-link>
         <div>
             <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
                 <div class="border bg-white rounded p-2 flex items-center">
