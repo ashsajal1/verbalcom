@@ -30,7 +30,7 @@ onUnmounted(() => {
                     <input class="outline-none" type="text" placeholder="Search sample..." />
                     <button
                         class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
-                        Search
+                        <span class="pi pi-search"></span>
                     </button>
                 </div>
             </div>
