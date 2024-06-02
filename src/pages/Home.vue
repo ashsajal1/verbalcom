@@ -5,6 +5,6 @@ import { communicationSamples } from '../lib/texts'
 
 <template>
     <div v-for="sample in communicationSamples" :key="sample.id">
-        <TextCard :key="sample.id" :text="sample.text" :category="sample.category" />
+        <TextCard :key="sample.id" :id="sample.id" :text="sample.text" :category="sample.category" />
     </div>
 </template>
