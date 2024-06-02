@@ -4,13 +4,13 @@ import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
+console.log(isDark.value)
 const toggleDark = useToggle(isDark)
 
 const isScrolled = ref(false)
 
 const handleScroll = () => {
     isScrolled.value = window.scrollY > 100
-    // console.log(isScrolled.value)
 }
 
 onMounted(() => {
@@ -34,7 +34,7 @@ onUnmounted(() => {
         </router-link>
         <div class="flex items-center gap-2">
             <div>
-                <Button @click='toggleDark'>
+                <Button @click='toggleDark()'>
                     <span v-if="isDark" class="pi pi-sun"></span>
                     <span v-if="!isDark" class="pi pi-moon"></span>
                 </Button>
