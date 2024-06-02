@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { communicationSamples } from '@/lib/texts';
-import { ref } from 'vue';
+import { ref, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router'
 import Button from '@/components/Button.vue';
 import TextArea from '@/components/TextArea.vue';
@@ -9,6 +9,7 @@ const route = useRoute()
 const id = route.query.id as string
 const praciceSample = ref(communicationSamples.filter(text => text.id === id)[0])
 
+
 const {
     isSupported,
     isPlaying,
@@ -16,6 +17,10 @@ const {
     speak,
     toggle
 } = useSpeechSynthesis(praciceSample.value.text)
+
+onUnmounted(() => {
+  stop()
+});
 
 const handleClick = () => {
     if (isSupported.value) {
