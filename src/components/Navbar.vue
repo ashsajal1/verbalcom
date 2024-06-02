@@ -33,7 +33,7 @@ onUnmounted(() => {
         </router-link>
         <div class="flex items-center gap-2">
             <div>
-                <Button @click='toggleDark()'>
+                <Button variant='ghost' @click='toggleDark()'>
                     <span v-if="isDark" class="pi pi-sun"></span>
                     <span v-if="!isDark" class="pi pi-moon"></span>
                 </Button>
