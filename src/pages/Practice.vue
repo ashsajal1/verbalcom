@@ -60,7 +60,7 @@ const { isListening } = speech;
                 <span v-if="isPlaying" @click="stop()" class="pi pi-volume-off"></span>
             </Button>
         </h1>
-        <textarea v-model="result" placeholder="Write text" class="p-2 rounded border w-full"></textarea>
+        <textarea v-model="result" placeholder="Write text" class="p-2 rounded border w-full dark:bg-black outline-none dark:border-gray-700"></textarea>
         <Button class="w-full mt-3">Submit</Button>
 
         <div v-if="!speech.isSupported" class="flex items-center gap-4">
