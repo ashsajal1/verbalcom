@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { communicationSamples } from '@/lib/texts';
-import { ref, onUnmounted } from 'vue';
+import { ref, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router'
 import Button from '@/components/Button.vue';
 import TextArea from '@/components/TextArea.vue';
@@ -9,6 +9,8 @@ const route = useRoute()
 const id = route.query.id as string
 const praciceSample = ref(communicationSamples.filter(text => text.id === id)[0])
 
+const words = praciceSample.value.text.split(' ')
+const currentIndex = ref(0)
 
 const {
     isSupported,
@@ -18,8 +20,25 @@ const {
     toggle
 } = useSpeechSynthesis(praciceSample.value.text)
 
+let interval: number | null = null;
+
+watch(isPlaying, (newValue) => {
+    if (newValue) {
+        interval = setInterval(() => {
+            currentIndex.value++;
+            if (currentIndex.value >= words.length) {
+                clearInterval(interval!);
+                currentIndex.value = 0;
+            }
+        }, 400);
+    } else if (interval) {
+        clearInterval(interval);
+        interval = null;
+    }
+});
+
 onUnmounted(() => {
-  stop()
+    stop()
 });
 
 const handleClick = () => {
@@ -60,7 +79,11 @@ const { isListening } = speech;
 <template>
     <div>
         <h1 class="text-2xl flex items-center gap-2 font-extralight py-4">
-            <span>{{ praciceSample.text }}</span>
+
+            <div class="flex flex-wrap text-wrap" v-for="(word, index) in words" :key="index">
+                <span :class="{ 'bg-blue-200': isPlaying && index === currentIndex }">{{ word }}</span>
+            </div>
+
             <Button v-if="!isPlaying" @click="handleClick" variant="ghost">
                 <span class="pi pi-volume-down"></span>
             </Button>
