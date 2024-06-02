@@ -4,7 +4,6 @@ import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
-console.log(isDark.value)
 const toggleDark = useToggle(isDark)
 
 const isScrolled = ref(false)
