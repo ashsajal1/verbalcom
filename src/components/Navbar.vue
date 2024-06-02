@@ -7,6 +7,7 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 const isScrolled = ref(false)
+const isOpenMenu = ref(false)
 
 const handleScroll = () => {
     isScrolled.value = window.scrollY > 100
@@ -19,6 +20,13 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll)
 })
+
+const handleMenuOpen = () => {
+    isOpenMenu.value = true
+}
+const handleMenuClose = () => {
+    isOpenMenu.value = false
+}
 </script>
 
 <template>
@@ -39,6 +47,15 @@ onUnmounted(() => {
                     <span v-if="!isDark" class="pi pi-moon"></span>
                 </Button>
             </div>
+
+            <Button v-if="!isOpenMenu" class="md:hidden" @click="handleMenuOpen()">
+                <span class="pi pi-bars" </span>
+            </Button>
+
+            <Button v-if="isOpenMenu" @click="handleMenuClose()" variant="ghost" class="md:hidden shadow">
+                <span class="pi pi-angle-double-up animate-bounce
+" </span>
+            </Button>
 
             <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
                 <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
