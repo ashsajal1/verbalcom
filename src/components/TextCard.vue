@@ -12,7 +12,7 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div v-motion-roll-top :duration="600" class="flex flex-col border dark:border-gray-700 shadow p-4 rounded my-4">
+  <div v-motion-roll-top :duration="600" class="flex flex-col border dark:border-gray-700 shadow p-4 rounded">
     <p @click="handleClick" class="font-extralight text-2xl">{{ text }}</p>
     <p class="font-bold text-sm">{{ category }}</p>
     <Button class="mt-2 hover:to-violet-700 hover:from-teal-700" @click="handleClick">Practice</Button>
