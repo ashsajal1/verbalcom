@@ -56,9 +56,12 @@ const { isListening } = speech;
     <div>
         <h1 class="text-2xl flex items-center gap-2 font-extralight py-4">
             <span>{{ praciceSample.text }}</span>
-            <Button variant="ghost">
-                <span v-if="!isPlaying" @click="handleClick" class="pi pi-volume-down"></span>
-                <span v-if="isPlaying" @click="stop()" class="pi pi-volume-off"></span>
+            <Button v-if="!isPlaying" @click="handleClick" variant="ghost">
+                <span class="pi pi-volume-down"></span>
+            </Button>
+
+            <Button v-if="isPlaying" @click="stop()" variant="ghost">
+                <span class="pi pi-volume-off"></span>
             </Button>
         </h1>
         <TextArea v-model="result" placeholder="Write text"></TextArea>
