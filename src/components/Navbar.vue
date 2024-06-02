@@ -32,13 +32,15 @@ onUnmounted(() => {
             </p>
         </router-link>
         <div class="flex items-center gap-2">
+
             <div>
                 <Button variant='ghost' @click='toggleDark()'>
                     <span v-if="isDark" class="pi pi-sun"></span>
                     <span v-if="!isDark" class="pi pi-moon"></span>
                 </Button>
             </div>
-            <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
+
+            <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
                 <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
                     <input class="outline-none dark:bg-black" type="text" placeholder="Search sample..." />
                     <button
