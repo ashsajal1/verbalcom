@@ -20,11 +20,25 @@ const {
     toggle
 } = useSpeechSynthesis(praciceSample.value.text)
 
+type PunctuationPause = {
+  [key: string]: number;
+};
+
+const punctuationPause: PunctuationPause = {
+  ',': 200,
+  '.': 400,
+  '?': 400,
+  '!': 400,
+  ':': 300,
+  ';': 300
+};
+
 const getWordDuration = (word: string) => {
-    // Assume a base duration and add extra time based on word length
     const baseDuration = 100; // Base duration for a word
     const extraDuration = word.length * 50; // Additional duration per character
-    return baseDuration + extraDuration;
+    const lastChar = word[word.length - 1];
+    const punctuationDuration = punctuationPause[lastChar] || 0; // Extra duration for punctuation
+    return baseDuration + extraDuration + punctuationDuration;
 };
 
 let interval: number | null = null;
