@@ -9,21 +9,20 @@ const id = route.query.id as string
 const praciceSample = ref(communicationSamples.filter(text => text.id === id)[0])
 
 const {
-  isSupported,
-  isPlaying,
-  stop,
-  speak,
+    isSupported,
+    isPlaying,
+    stop,
+    speak,
+    toggle
 } = useSpeechSynthesis(praciceSample.value.text)
 
 const handleClick = () => {
-  if (isSupported.value) {
-    if (isPlaying.value) {
-      stop()
+    if (isSupported.value) {
+        speak()
+        toggle()
+    } else {
+        console.error('Speech synthesis is not supported in this browser.')
     }
-    speak()
-  } else {
-    console.error('Speech synthesis is not supported in this browser.')
-  }
 }
 
 </script>
