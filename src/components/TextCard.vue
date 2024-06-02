@@ -4,20 +4,9 @@ import { useRouter } from 'vue-router'
 import Button from '../components/Button.vue'
 
 const props = defineProps<{ id: string; text: string; category: string }>()
-
 const router = useRouter()
 
 const handleClick = () => {
-  // if (isSupported.value) {
-  //   if (isPlaying.value) {
-  //     stop()
-  //   }
-  //   speak()
-  // } else {
-  //   console.error('Speech synthesis is not supported in this browser.')
-  // }
-
-  // Navigate to the /practice?id=id page
   router.push(`/practice?id=${props.id}`)
 }
 </script>
