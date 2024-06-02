@@ -31,35 +31,52 @@ const handleMenuClose = () => {
 
 <template>
     <header
-        class="flex dark:bg-black items-center justify-between p-4 h-[80px] bg-white w-full z-10 border-b dark:border-b-gray-700 fixed top-0 transition-all duration-300"
+        class="flex flex-col dark:bg-black items-center justify-between p-4 bg-white w-full z-10 border-b dark:border-b-gray-700 fixed top-0 transition-all duration-300"
         :class="{ 'backdrop-blur bg-opacity-60': isScrolled }">
-        <router-link to="/">
-            <p
-                class="md:text-3xl text-lg font-bold bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent select-none">
-                VerbalCom
-            </p>
-        </router-link>
-        <div class="flex items-center gap-2">
 
-            <div>
-                <Button variant='ghost' @click='toggleDark()'>
-                    <span v-if="isDark" class="pi pi-sun"></span>
-                    <span v-if="!isDark" class="pi pi-moon"></span>
+        <div class="flex items-center justify-between w-full">
+
+            <router-link to="/">
+                <p
+                    class="md:text-3xl text-lg font-bold bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent select-none">
+                    VerbalCom
+                </p>
+            </router-link>
+            <div class="flex items-center gap-2">
+
+                <div>
+                    <Button variant='ghost' @click='toggleDark()'>
+                        <span v-if="isDark" class="pi pi-sun"></span>
+                        <span v-if="!isDark" class="pi pi-moon"></span>
+                    </Button>
+                </div>
+
+                <Button v-if="!isOpenMenu" class="md:hidden" @click="handleMenuOpen()">
+                    <span class="pi pi-bars" </span>
                 </Button>
+
+                <Button v-if="isOpenMenu" @click="handleMenuClose()" variant="ghost" class="md:hidden shadow">
+                    <span class="pi pi-angle-double-up animate-bounce
+    " </span>
+                </Button>
+
+                <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
+                    <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
+                        <input class="outline-none dark:bg-black" type="text" placeholder="Search sample..." />
+                        <button
+                            class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
+                            <span class="pi pi-search"></span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <Button v-if="!isOpenMenu" class="md:hidden" @click="handleMenuOpen()">
-                <span class="pi pi-bars" </span>
-            </Button>
+        </div>
 
-            <Button v-if="isOpenMenu" @click="handleMenuClose()" variant="ghost" class="md:hidden shadow">
-                <span class="pi pi-angle-double-up animate-bounce
-" </span>
-            </Button>
-
-            <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
-                <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
-                    <input class="outline-none dark:bg-black" type="text" placeholder="Search sample..." />
+        <div v-if="isOpenMenu" class="w-full">
+            <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
+                <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center justify-between">
+                    <input class="outline-none w-full dark:bg-black" type="text" placeholder="Search sample..." />
                     <button
                         class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                         <span class="pi pi-search"></span>
