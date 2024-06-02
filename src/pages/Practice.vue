@@ -20,6 +20,13 @@ const {
     toggle
 } = useSpeechSynthesis(praciceSample.value.text)
 
+const getWordDuration = (word: string) => {
+    // Assume a base duration and add extra time based on word length
+    const baseDuration = 100; // Base duration for a word
+    const extraDuration = word.length * 50; // Additional duration per character
+    return baseDuration + extraDuration;
+};
+
 let interval: number | null = null;
 
 watch(isPlaying, (newValue) => {
@@ -30,7 +37,7 @@ watch(isPlaying, (newValue) => {
                 clearInterval(interval!);
                 currentIndex.value = 0;
             }
-        }, 400);
+        }, getWordDuration(words[currentIndex.value]));
     } else if (interval) {
         clearInterval(interval);
         interval = null;
