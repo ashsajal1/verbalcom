@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import Button from './Button.vue';
 
 const isScrolled = ref(false)
 
@@ -27,7 +28,10 @@ onUnmounted(() => {
                 VerbalCom
             </p>
         </router-link>
-        <div>
+        <div class="flex items-center gap-2">
+            <div>
+                <Button><span class="pi pi-sun"></span></Button>
+            </div>
             <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
                 <div class="border bg-white rounded p-2 flex items-center">
                     <input class="outline-none" type="text" placeholder="Search sample..." />
