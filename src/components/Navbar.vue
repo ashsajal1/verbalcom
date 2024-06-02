@@ -27,7 +27,7 @@ onUnmounted(() => {
         :class="{ 'backdrop-blur bg-opacity-60': isScrolled }">
         <router-link to="/">
             <p
-                class="md:text-3xl text-lg font-bold bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent">
+                class="md:text-3xl text-lg font-bold bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent select-none">
                 VerbalCom
             </p>
         </router-link>
