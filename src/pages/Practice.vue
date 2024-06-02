@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { communicationSamples } from '@/lib/texts';
-import { ref } from 'vue';
+import { ref, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router'
 import Button from '@/components/Button.vue';
 import TextArea from '@/components/TextArea.vue';
@@ -9,6 +9,9 @@ const route = useRoute()
 const id = route.query.id as string
 const praciceSample = ref(communicationSamples.filter(text => text.id === id)[0])
 
+const words = praciceSample.value.text.split(' ')
+const currentIndex = ref(0)
+
 const {
     isSupported,
     isPlaying,
@@ -16,6 +19,48 @@ const {
     speak,
     toggle
 } = useSpeechSynthesis(praciceSample.value.text)
+
+type PunctuationPause = {
+  [key: string]: number;
+};
+
+const punctuationPause: PunctuationPause = {
+  ',': 200,
+  '.': 400,
+  '?': 400,
+  '!': 400,
+  ':': 300,
+  ';': 300
+};
+
+const getWordDuration = (word: string) => {
+    const baseDuration = 100; // Base duration for a word
+    const extraDuration = word.length * 50; // Additional duration per character
+    const lastChar = word[word.length - 1];
+    const punctuationDuration = punctuationPause[lastChar] || 0; // Extra duration for punctuation
+    return baseDuration + extraDuration + punctuationDuration;
+};
+
+let interval: number | null = null;
+
+watch(isPlaying, (newValue) => {
+    if (newValue) {
+        interval = setInterval(() => {
+            currentIndex.value++;
+            if (currentIndex.value >= words.length) {
+                clearInterval(interval!);
+                currentIndex.value = 0;
+            }
+        }, getWordDuration(words[currentIndex.value]));
+    } else if (interval) {
+        clearInterval(interval);
+        interval = null;
+    }
+});
+
+onUnmounted(() => {
+    stop()
+});
 
 const handleClick = () => {
     if (isSupported.value) {
@@ -54,8 +99,12 @@ const { isListening } = speech;
 
 <template>
     <div>
-        <h1 class="text-2xl flex items-center gap-2 font-extralight py-4">
-            <span>{{ praciceSample.text }}</span>
+        <div class="text-2xl flex flex-wrap items-center gap-2 font-extralight py-4">
+
+            <div class="flex" v-for="(word, index) in words" :key="index">
+                <span :class="{ 'bg-blue-200': isPlaying && index === currentIndex }">{{ word }}</span>
+            </div>
+
             <Button v-if="!isPlaying" @click="handleClick" variant="ghost">
                 <span class="pi pi-volume-down"></span>
             </Button>
@@ -63,7 +112,7 @@ const { isListening } = speech;
             <Button v-if="isPlaying" @click="stop()" variant="ghost">
                 <span class="pi pi-volume-off"></span>
             </Button>
-        </h1>
+        </div>
         <TextArea v-model="result" placeholder="Write text"></TextArea>
         <Button class="w-full mt-3">Submit</Button>
 
