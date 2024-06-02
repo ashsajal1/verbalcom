@@ -74,12 +74,7 @@ const handleMenuClose = () => {
         </div>
 
         <template v-if="isOpenMenu">
-            <div v-motion :initial="{ scale: 0 }" :enter="{
-                scale: 1,
-                transition: {
-                    type: 'spring'
-                }
-            }" :duration="600" class="w-full mt-3">
+            <div v-motion-pop :duration="600" class="w-full mt-3">
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
                     <div
                         class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center justify-between">
