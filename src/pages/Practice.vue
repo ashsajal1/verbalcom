@@ -3,6 +3,7 @@ import { communicationSamples } from '@/lib/texts';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router'
 import Button from '@/components/Button.vue';
+import TextArea from '@/components/TextArea.vue';
 import { useSpeechSynthesis } from '@vueuse/core'
 const route = useRoute()
 const id = route.query.id as string
@@ -60,7 +61,7 @@ const { isListening } = speech;
                 <span v-if="isPlaying" @click="stop()" class="pi pi-volume-off"></span>
             </Button>
         </h1>
-        <textarea v-model="result" placeholder="Write text" class="p-2 rounded border w-full dark:bg-black outline-none dark:border-gray-700"></textarea>
+        <TextArea v-model="result" placeholder="Write text"></TextArea>
         <Button class="w-full mt-3">Submit</Button>
 
         <div v-if="!speech.isSupported" class="flex items-center gap-4">
