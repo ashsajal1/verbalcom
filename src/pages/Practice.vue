@@ -63,6 +63,7 @@ onUnmounted(() => {
 });
 
 const handleClick = () => {
+    currentIndex.value = 0;
     if (isSupported.value) {
         speak()
         toggle()
