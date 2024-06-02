@@ -99,9 +99,9 @@ const { isListening } = speech;
 
 <template>
     <div>
-        <h1 class="text-2xl flex items-center gap-2 font-extralight py-4">
+        <div class="text-2xl flex flex-wrap items-center gap-2 font-extralight py-4">
 
-            <div class="flex flex-wrap text-wrap" v-for="(word, index) in words" :key="index">
+            <div class="flex" v-for="(word, index) in words" :key="index">
                 <span :class="{ 'bg-blue-200': isPlaying && index === currentIndex }">{{ word }}</span>
             </div>
 
@@ -112,7 +112,7 @@ const { isListening } = speech;
             <Button v-if="isPlaying" @click="stop()" variant="ghost">
                 <span class="pi pi-volume-off"></span>
             </Button>
-        </h1>
+        </div>
         <TextArea v-model="result" placeholder="Write text"></TextArea>
         <Button class="w-full mt-3">Submit</Button>
 
