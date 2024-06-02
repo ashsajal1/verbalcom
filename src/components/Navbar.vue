@@ -73,16 +73,25 @@ const handleMenuClose = () => {
 
         </div>
 
-        <div v-if="isOpenMenu" class="w-full">
-            <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
-                <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center justify-between">
-                    <input class="outline-none w-full dark:bg-black" type="text" placeholder="Search sample..." />
-                    <button
-                        class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
-                        <span class="pi pi-search"></span>
-                    </button>
+        <template v-if="isOpenMenu">
+            <div v-motion :initial="{ scale: 0 }" :enter="{
+                scale: 1,
+                transition: {
+                    type: 'spring'
+                }
+            }" :duration="600" class="w-full mt-3">
+                <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
+                    <div
+                        class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center justify-between">
+                        <input class="outline-none w-full dark:bg-black" type="text" placeholder="Search sample..." />
+                        <button
+                            class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
+                            <span class="pi pi-search"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </template>
+
     </header>
 </template>
