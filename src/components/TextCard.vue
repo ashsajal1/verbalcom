@@ -1,17 +1,9 @@
 <script lang="ts" setup>
-import { useSpeechSynthesis } from '@vueuse/core'
 import { defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 import Button from '../components/Button.vue'
 
 const props = defineProps<{ id: string; text: string; category: string }>()
-
-// const {
-//   isSupported,
-//   isPlaying,
-//   stop,
-//   speak,
-// } = useSpeechSynthesis(props.text)
 
 const router = useRouter()
 
