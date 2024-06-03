@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal public/logo.png"
   },
   "dependencies": {
     "@vueuse/core": "^10.10.0",
