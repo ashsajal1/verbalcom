@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
       manifest: {
-        name: "Vite PWA Project",
-        short_name: "Vite PWA Project",
-        theme_color: "#ffffff",
+        name: "VerbalCom : Practice English Communication",
+        short_name: "VerbalCom",
+        theme_color: "#0F766E",
         icons: [
           {
             src: "pwa-64x64.png",
