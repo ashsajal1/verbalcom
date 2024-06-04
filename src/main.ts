@@ -8,6 +8,7 @@ import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
 import Practice from "./pages/Practice.vue";
 import NotFound from "./pages/NotFound.vue";
+import { createPinia } from 'pinia'
 
 const routes = [
   { path: "/", component: Home },
@@ -21,9 +22,10 @@ const router = createRouter({
   routes,
 });
 
+const pinia = createPinia()
 const app = createApp(App);
 
 app.use(MotionPlugin);
 app.use(router);
-
+app.use(pinia)
 app.mount("#app");
