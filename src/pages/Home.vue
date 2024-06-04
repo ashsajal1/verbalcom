@@ -3,8 +3,9 @@ import { storeToRefs } from 'pinia'
 import { useSearchStore } from '@/stores/search';
 import TextCard from '../components/TextCard.vue';
 import { communicationSamples } from '../lib/texts'
-const { searchText } = storeToRefs(useSearchStore())
-
+import { useRoute } from 'vue-router';
+const route = useRoute();
+const searchText = route.query.search
 </script>
 
 <template>
