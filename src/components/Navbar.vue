@@ -30,6 +30,10 @@ const handleMenuOpen = () => {
 const handleMenuClose = () => {
     isOpenMenu.value = false
 }
+
+const handleSearch = () => {
+    console.log(searchText.value)
+}
 </script>
 
 <template>
@@ -65,7 +69,8 @@ const handleMenuClose = () => {
 
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
                     <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
-                        <input v-model="searchText" class="outline-none dark:bg-black" type="text" placeholder="Search sample..." />
+                        <input v-model="searchText" class="outline-none dark:bg-black" type="text"
+                            placeholder="Search sample..." />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                             <span class="pi pi-search"></span>
@@ -79,14 +84,15 @@ const handleMenuClose = () => {
         <template v-if="isOpenMenu">
             <div v-motion-pop :duration="600" class="w-full mt-3">
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
-                    <div
+                    <form @submit.prevent="handleSearch()"
                         class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center justify-between">
-                        <input v-model="searchText" class="outline-none w-full dark:bg-black" type="text" placeholder="Search sample..." />
+                        <input v-model="searchText" class="outline-none w-full dark:bg-black" type="text"
+                            placeholder="Search sample..." />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                             <span class="pi pi-search"></span>
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </template>
