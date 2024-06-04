@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useSearchStore } from '@/stores/search';
+import Button from '@/components/Button.vue';
 
 const { hasSearched } = storeToRefs(useSearchStore());
 
@@ -25,8 +26,12 @@ const filteredSamples = computed(() => {
 </script>
 
 <template>
-    <div class="border p-4 mb-4 rounded dark:border-gray-700" v-if="hasSearched">
-        Searched items for : <span class="font-bold">{{ searchText }}</span>
+    <div class="border p-4 mb-4 rounded dark:border-gray-700 flex items-center justify-between" v-if="hasSearched">
+        <p>Searched items for : <span class="font-bold">{{ searchText }}</span></p>
+
+        <Button variant="ghost">
+            <span class="pi pi-times"></span>
+        </Button>
     </div>
     <div class="grid md:grid-cols-2 gap-2">
         <div v-for="sample in filteredSamples" :key="sample.id">
