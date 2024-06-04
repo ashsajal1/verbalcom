@@ -1,6 +1,10 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
+import { useSearchStore } from '@/stores/search';
 import TextCard from '../components/TextCard.vue';
 import { communicationSamples } from '../lib/texts'
+const { searchText } = storeToRefs(useSearchStore())
+
 </script>
 
 <template>
