@@ -7,7 +7,7 @@ import { storeToRefs } from 'pinia';
 import { useSearchStore } from '@/stores/search';
 import Button from '@/components/Button.vue';
 
-const { hasSearched } = storeToRefs(useSearchStore());
+const { hasSearched, searchText } = storeToRefs(useSearchStore());
 const { setHasSearched } = useSearchStore();
 
 const route = useRoute();
@@ -25,14 +25,17 @@ const filteredSamples = computed(() => {
     );
 });
 
-
+const handleReset = () => {
+    searchText.value = ''
+    setHasSearched(false)
+}
 </script>
 
 <template>
     <div class="border p-4 mb-4 rounded dark:border-gray-700 flex items-center justify-between" v-if="hasSearched">
         <p>Searched items for : <span class="font-bold">{{ searchQueryText }}</span></p>
 
-        <Button @click="setHasSearched(false)" variant="ghost">
+        <Button @click="handleReset" variant="ghost">
             <span class="pi pi-times"></span>
         </Button>
     </div>
