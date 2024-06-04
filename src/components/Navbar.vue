@@ -34,7 +34,7 @@ const handleMenuClose = () => {
 }
 
 const handleSearch = () => {
-    // console.log(searchText.value)
+    isOpenMenu.value = false;
     router.push({ name: 'home', query: { search: searchText.value } })
 }
 </script>
