@@ -35,7 +35,7 @@ const handleMenuClose = () => {
 
 const handleSearch = () => {
     // console.log(searchText.value)
-    router.push({ name: '', query: { search: searchText.value } })
+    router.push({ name: 'home', query: { search: searchText.value } })
 }
 </script>
 

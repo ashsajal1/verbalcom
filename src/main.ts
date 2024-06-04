@@ -11,7 +11,7 @@ import NotFound from "./pages/NotFound.vue";
 import { createPinia } from 'pinia'
 
 const routes = [
-  { path: "/", component: Home },
+  { path: "/", name: 'home', component: Home },
   { path: "/about", component: About },
   { path: "/practice", component: Practice },
   { path: "/:patchMatch(.*)*", component: NotFound },
