@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import TextCard from '../components/TextCard.vue';
 import { communicationSamples } from '../lib/texts';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useSearchStore } from '@/stores/search';
 import Button from '@/components/Button.vue';
 
+const router = useRouter()
 const { hasSearched, searchText } = storeToRefs(useSearchStore());
 const { setHasSearched } = useSearchStore();
 
@@ -28,6 +29,7 @@ const filteredSamples = computed(() => {
 const handleReset = () => {
     searchText.value = ''
     setHasSearched(false)
+    router.push({ query: {} })
 }
 </script>
 
