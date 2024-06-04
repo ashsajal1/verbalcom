@@ -4,7 +4,9 @@ import { storeToRefs } from 'pinia'
 import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
 import { useSearchStore } from '@/stores/search';
+import { useRouter } from 'vue-router';
 const { searchText } = storeToRefs(useSearchStore());
+const router = useRouter()
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -32,7 +34,8 @@ const handleMenuClose = () => {
 }
 
 const handleSearch = () => {
-    console.log(searchText.value)
+    // console.log(searchText.value)
+    router.push({ name: '', query: { search: searchText.value } })
 }
 </script>
 
