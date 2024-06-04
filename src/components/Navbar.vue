@@ -5,6 +5,7 @@ import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
 import { useSearchStore } from '@/stores/search';
 import { useRouter } from 'vue-router';
+const searchStore = useSearchStore();
 const { searchText } = storeToRefs(useSearchStore());
 const router = useRouter()
 
@@ -34,6 +35,9 @@ const handleMenuClose = () => {
 }
 
 const handleSearch = () => {
+    if (searchText.value !== '') {
+        searchStore.setHasSearched(true)
+    }
     isOpenMenu.value = false;
     router.push({ name: 'home', query: { search: searchText.value } })
 }
@@ -71,7 +75,8 @@ const handleSearch = () => {
                 </Button>
 
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
-                    <form @submit.prevent="handleSearch()" class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
+                    <form @submit.prevent="handleSearch()"
+                        class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
                         <input v-model="searchText" class="outline-none dark:bg-black" type="text"
                             placeholder="Search sample..." />
                         <button
