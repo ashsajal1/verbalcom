@@ -71,14 +71,14 @@ const handleSearch = () => {
                 </Button>
 
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
-                    <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
+                    <form @submit.prevent="handleSearch()" class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
                         <input v-model="searchText" class="outline-none dark:bg-black" type="text"
                             placeholder="Search sample..." />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                             <span class="pi pi-search"></span>
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
 
