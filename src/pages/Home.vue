@@ -11,11 +11,11 @@ const { hasSearched } = storeToRefs(useSearchStore());
 const { setHasSearched } = useSearchStore();
 
 const route = useRoute();
-const searchText = computed(() => route.query.search as string | undefined);
+const searchQueryText = computed(() => route.query.search as string | undefined);
 
 const filteredSamples = computed(() => {
-    if (!searchText.value) return communicationSamples;
-    const searchTerms = searchText.value.toLowerCase().split(' ');
+    if (!searchQueryText.value) return communicationSamples;
+    const searchTerms = searchQueryText.value.toLowerCase().split(' ');
     return communicationSamples.filter((sample) =>
         searchTerms.some(
             (term) =>
@@ -24,11 +24,13 @@ const filteredSamples = computed(() => {
         )
     );
 });
+
+
 </script>
 
 <template>
     <div class="border p-4 mb-4 rounded dark:border-gray-700 flex items-center justify-between" v-if="hasSearched">
-        <p>Searched items for : <span class="font-bold">{{ searchText }}</span></p>
+        <p>Searched items for : <span class="font-bold">{{ searchQueryText }}</span></p>
 
         <Button @click="setHasSearched(false)" variant="ghost">
             <span class="pi pi-times"></span>
