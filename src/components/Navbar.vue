@@ -1,7 +1,13 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { storeToRefs } from 'pinia'
 import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
+import { useSearchStore } from '@/stores/search';
+import { useRouter } from 'vue-router';
+const searchStore = useSearchStore();
+const { searchText } = storeToRefs(useSearchStore());
+const router = useRouter()
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -26,6 +32,14 @@ const handleMenuOpen = () => {
 }
 const handleMenuClose = () => {
     isOpenMenu.value = false
+}
+
+const handleSearch = () => {
+    if (searchText.value !== '') {
+        searchStore.setHasSearched(true)
+    }
+    isOpenMenu.value = false;
+    router.push({ name: 'home', query: { search: searchText.value } })
 }
 </script>
 
@@ -61,13 +75,15 @@ const handleMenuClose = () => {
                 </Button>
 
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
-                    <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
-                        <input class="outline-none dark:bg-black" type="text" placeholder="Search sample..." />
+                    <form @submit.prevent="handleSearch()"
+                        class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
+                        <input v-model="searchText" class="outline-none dark:bg-black" type="text"
+                            placeholder="Search sample..." />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                             <span class="pi pi-search"></span>
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
 
@@ -76,14 +92,15 @@ const handleMenuClose = () => {
         <template v-if="isOpenMenu">
             <div v-motion-pop :duration="600" class="w-full mt-3">
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
-                    <div
+                    <form @submit.prevent="handleSearch()"
                         class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center justify-between">
-                        <input class="outline-none w-full dark:bg-black" type="text" placeholder="Search sample..." />
+                        <input v-model="searchText" class="outline-none w-full dark:bg-black" type="text"
+                            placeholder="Search sample..." />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                             <span class="pi pi-search"></span>
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </template>
