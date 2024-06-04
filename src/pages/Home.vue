@@ -41,6 +41,13 @@ const handleReset = () => {
             <span class="pi pi-times"></span>
         </Button>
     </div>
+
+    <div class="flex flex-col gap-3 justify-center items-center" v-if="!filteredSamples.length">
+        <span class="font-light text-3xl">No item found</span>
+        <div class="flex items-center gap-2">
+            <Button @click="handleReset" class="shadow" variant="ghost">Go to Home</Button>
+        </div>
+    </div>
     <div class="grid md:grid-cols-2 gap-2">
         <div v-for="sample in filteredSamples" :key="sample.id">
             <TextCard :key="sample.id" :id="sample.id" :text="sample.text" :category="sample.category" />
