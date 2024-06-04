@@ -8,5 +8,5 @@ export const useSearchStore = defineStore("search", () => {
     hasSearched.value = value
   }
 
-  return { searchText, setHasSearched };
+  return { searchText, setHasSearched, hasSearched };
 });
