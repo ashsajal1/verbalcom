@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { storeToRefs } from 'pinia'
 import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
+import { useSearchStore } from '@/stores/search';
+const { searchText } = storeToRefs(useSearchStore());
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -62,7 +65,7 @@ const handleMenuClose = () => {
 
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
                     <div class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
-                        <input class="outline-none dark:bg-black" type="text" placeholder="Search sample..." />
+                        <input v-model="searchText" class="outline-none dark:bg-black" type="text" placeholder="Search sample..." />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                             <span class="pi pi-search"></span>
@@ -78,7 +81,7 @@ const handleMenuClose = () => {
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px]">
                     <div
                         class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center justify-between">
-                        <input class="outline-none w-full dark:bg-black" type="text" placeholder="Search sample..." />
+                        <input v-model="searchText" class="outline-none w-full dark:bg-black" type="text" placeholder="Search sample..." />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                             <span class="pi pi-search"></span>
