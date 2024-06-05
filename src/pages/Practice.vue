@@ -133,7 +133,7 @@ function refreshPage() {
             </div>
         </div>
 
-        <TextArea :class="{ 'border-red-500': isInputEmpty }" v-model="result" placeholder="Write text"></TextArea>
+        <TextArea @keyup.enter="handleSubmit" :class="{ 'border-red-500': isInputEmpty }" v-model="result" placeholder="Write text"></TextArea>
         <Button @click="handleSubmit()" class="w-full mt-3">Submit</Button>
 
         <div v-if="!speech.isSupported" class="flex items-center gap-4">
