@@ -21,16 +21,16 @@ const {
 } = useSpeechSynthesis(praciceSample.value.text)
 
 type PunctuationPause = {
-  [key: string]: number;
+    [key: string]: number;
 };
 
 const punctuationPause: PunctuationPause = {
-  ',': 200,
-  '.': 400,
-  '?': 400,
-  '!': 400,
-  ':': 300,
-  ';': 300
+    ',': 200,
+    '.': 400,
+    '?': 400,
+    '!': 400,
+    ':': 300,
+    ';': 300
 };
 
 const getWordDuration = (word: string) => {
@@ -97,36 +97,36 @@ function stopSpeech() {
 const { isListening } = speech;
 
 const accuracy = computed(() => {
-  if (!result.value) return 0;
-  const editDistance = levenshteinDistance(praciceSample.value.text, result.value);
-  const maxLength = Math.max(praciceSample.value.text.length, result.value.length);
-  return Math.max(0, 100 - (editDistance / maxLength) * 100);
+    if (!result.value) return 0;
+    const editDistance = levenshteinDistance(praciceSample.value.text, result.value);
+    const maxLength = Math.max(praciceSample.value.text.length, result.value.length);
+    return Math.max(0, 100 - (editDistance / maxLength) * 100);
 });
 
 function levenshteinDistance(s1: string, s2: string): number {
-  const m = s1.length;
-  const n = s2.length;
-  const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+    const m = s1.length;
+    const n = s2.length;
+    const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
 
-  for (let i = 0; i <= m; i++) {
-    dp[i][0] = i;
-  }
-
-  for (let j = 0; j <= n; j++) {
-    dp[0][j] = j;
-  }
-
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      if (s1[i - 1] === s2[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1];
-      } else {
-        dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
-      }
+    for (let i = 0; i <= m; i++) {
+        dp[i][0] = i;
     }
-  }
 
-  return dp[m][n];
+    for (let j = 0; j <= n; j++) {
+        dp[0][j] = j;
+    }
+
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            if (s1[i - 1] === s2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+            }
+        }
+    }
+
+    return dp[m][n];
 }
 
 </script>
@@ -136,7 +136,8 @@ function levenshteinDistance(s1: string, s2: string): number {
         <div class="text-2xl flex flex-wrap items-center gap-2 font-extralight py-4">
 
             <div class="flex py-2" v-for="(word, index) in words" :key="index">
-                <span :class="{ 'bg-primary p-1 text-white rounded': isPlaying && index === currentIndex }">{{ word }}</span>
+                <span :class="{ 'bg-primary p-1 text-white rounded': isPlaying && index === currentIndex }">{{ word
+                    }}</span>
             </div>
 
             <Button v-if="!isPlaying" @click="handleClick" variant="ghost">
@@ -148,8 +149,19 @@ function levenshteinDistance(s1: string, s2: string): number {
             </Button>
         </div>
 
-        <div class="text-sm py-4">
-            Accuracy : {{ accuracy }}
+        <div class="text-sm py-4 flex items-center gap-3">
+            <div>
+                <span>Accuracy : </span>
+                <span>{{ accuracy }}</span>
+            </div>
+
+            <div>
+                <span v-if="accuracy >= 90">🎉</span>
+                <span v-else-if="accuracy >= 80">👍</span>
+                <span v-else-if="accuracy >= 70">😊</span>
+                <span v-else-if="accuracy >= 50">🤔</span>
+                <span v-else>😕</span>
+            </div>
         </div>
 
         <TextArea v-model="result" placeholder="Write text"></TextArea>
