@@ -30,3 +30,16 @@ export function levenshteinDistance(s1: string, s2: string): number {
 
   return dp[m][n];
 }
+
+type PunctuationPause = {
+  [key: string]: number;
+};
+
+export const punctuationPause: PunctuationPause = {
+  ',': 200,
+  '.': 400,
+  '?': 400,
+  '!': 400,
+  ':': 300,
+  ';': 300
+};
