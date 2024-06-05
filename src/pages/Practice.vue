@@ -11,6 +11,7 @@ const praciceSample = ref(communicationSamples.filter(text => text.id === id)[0]
 
 const words = praciceSample.value.text.split(' ')
 const currentIndex = ref(0)
+const isCompleted = ref(false)
 
 const {
     isSupported,
@@ -83,11 +84,13 @@ const accuracy = computed(() => {
     return Math.max(0, 100 - (editDistance / maxLength) * 100);
 });
 
-
+const handleSubmit = () => {
+    isCompleted.value = true
+}
 </script>
 
 <template>
-    <div>
+    <div v-if="!isCompleted">
         <div class="text-2xl flex flex-wrap items-center gap-2 font-extralight py-4">
 
             <div class="flex py-2" v-for="(word, index) in words" :key="index">
@@ -120,11 +123,32 @@ const accuracy = computed(() => {
         </div>
 
         <TextArea v-model="result" placeholder="Write text"></TextArea>
-        <Button class="w-full mt-3">Submit</Button>
+        <Button @click="handleSubmit()" class="w-full mt-3">Submit</Button>
 
         <div v-if="!speech.isSupported" class="flex items-center gap-4">
             <Button v-if="!isListening" @click="start" class="w-full mt-3">Press and talk</Button>
             <Button v-if="isListening" @click="stopSpeech" class="w-full mt-3">Stop</Button>
+        </div>
+    </div>
+
+    <div v-if="isCompleted">
+        <div class="text-4xl py-4 flex flex-col items-center gap-3">
+            <div>
+                <span v-if="accuracy >= 90">🎉</span>
+                <span v-else-if="accuracy >= 80">👍</span>
+                <span v-else-if="accuracy >= 70">😊</span>
+                <span v-else-if="accuracy >= 50">🤔</span>
+                <span v-else>😕</span>
+            </div>
+
+            <div>
+                <span>{{ accuracy }}</span> 
+                <span>% Accuracy</span>
+            </div>
+            
+            <div class="text-sm">
+                <Button variant="ghost" class="shadow">Practice again</Button>
+            </div>
         </div>
     </div>
 </template>
