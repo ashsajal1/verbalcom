@@ -87,6 +87,10 @@ const accuracy = computed(() => {
 const handleSubmit = () => {
     isCompleted.value = true
 }
+
+function refreshPage() {
+  window.location.reload();
+}
 </script>
 
 <template>
@@ -147,7 +151,7 @@ const handleSubmit = () => {
             </div>
             
             <div class="text-sm">
-                <Button variant="ghost" class="shadow">Practice again</Button>
+                <Button @click="refreshPage" variant="ghost" class="shadow">Practice again</Button>
             </div>
         </div>
     </div>
