@@ -65,7 +65,7 @@ const handleSearch = () => {
                     </Button>
                 </div>
 
-                <Button v-if="!isOpenMenu" class="md:hidden" @click="handleMenuOpen()">
+                <Button variant="outline"v-if="!isOpenMenu" class="md:hidden text-primary hover:text-secondary" @click="handleMenuOpen()">
                     <span class="pi pi-bars" </span>
                 </Button>
 
