@@ -153,7 +153,7 @@ function refreshPage() {
             </div>
 
             <div>
-                <span>{{ accuracy }}</span>
+                <span>{{ accuracy.toFixed(0) }}</span>
                 <span>% Accuracy</span>
             </div>
 
