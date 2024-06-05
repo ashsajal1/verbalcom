@@ -121,7 +121,7 @@ function refreshPage() {
         <div class="text-sm py-4 flex items-center gap-3">
             <div>
                 <span>Accuracy : </span>
-                <span>{{ accuracy }}</span>
+                <span>{{ accuracy.toFixed(2) }}</span>
             </div>
 
             <div>
