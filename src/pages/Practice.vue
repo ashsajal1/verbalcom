@@ -13,6 +13,10 @@ const words = praciceSample.value.text.split(' ')
 const currentIndex = ref(0)
 const isCompleted = ref(false)
 
+const isInputEmpty = computed(() => {
+    return result.value.length === 0
+})
+
 const {
     isSupported,
     isPlaying,
@@ -85,11 +89,14 @@ const accuracy = computed(() => {
 });
 
 const handleSubmit = () => {
-    isCompleted.value = true
+    if (!isInputEmpty.value) {
+        isCompleted.value = true
+    }
 }
 
+
 function refreshPage() {
-  window.location.reload();
+    window.location.reload();
 }
 </script>
 
@@ -126,7 +133,7 @@ function refreshPage() {
             </div>
         </div>
 
-        <TextArea v-model="result" placeholder="Write text"></TextArea>
+        <TextArea :class="{ 'border-red-500': isInputEmpty }" v-model="result" placeholder="Write text"></TextArea>
         <Button @click="handleSubmit()" class="w-full mt-3">Submit</Button>
 
         <div v-if="!speech.isSupported" class="flex items-center gap-4">
@@ -146,10 +153,10 @@ function refreshPage() {
             </div>
 
             <div>
-                <span>{{ accuracy }}</span> 
+                <span>{{ accuracy }}</span>
                 <span>% Accuracy</span>
             </div>
-            
+
             <div class="text-sm">
                 <Button @click="refreshPage" variant="ghost" class="shadow">Practice again</Button>
             </div>
