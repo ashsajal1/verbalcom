@@ -20,14 +20,6 @@ const {
     toggle
 } = useSpeechSynthesis(praciceSample.value.text)
 
-const getWordDuration = (word: string) => {
-    const baseDuration = 100; // Base duration for a word
-    const extraDuration = word.length * 50; // Additional duration per character
-    const lastChar = word[word.length - 1];
-    const punctuationDuration = punctuationPause[lastChar] || 0; // Extra duration for punctuation
-    return baseDuration + extraDuration + punctuationDuration;
-};
-
 let interval: number | null = null;
 
 watch(isPlaying, (newValue) => {
@@ -60,7 +52,7 @@ const handleClick = () => {
 }
 
 import { useSpeechRecognition } from '@vueuse/core';
-import { levenshteinDistance, punctuationPause } from '@/lib/utils';
+import { getWordDuration, levenshteinDistance, punctuationPause } from '@/lib/utils';
 
 const speech = useSpeechRecognition({
     lang: 'en-US',

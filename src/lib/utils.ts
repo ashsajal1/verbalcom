@@ -43,3 +43,11 @@ export const punctuationPause: PunctuationPause = {
   ':': 300,
   ';': 300
 };
+
+export const getWordDuration = (word: string) => {
+  const baseDuration = 100; // Base duration for a word
+  const extraDuration = word.length * 50; // Additional duration per character
+  const lastChar = word[word.length - 1];
+  const punctuationDuration = punctuationPause[lastChar] || 0; // Extra duration for punctuation
+  return baseDuration + extraDuration + punctuationDuration;
+};
