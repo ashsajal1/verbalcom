@@ -5,6 +5,8 @@ import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
 import { useSearchStore } from '@/stores/search';
 import { useRouter } from 'vue-router';
+import { Sun, Moon, Menu, ArrowUpToLine } from 'lucide-vue-next';
+
 const searchStore = useSearchStore();
 const { searchText } = storeToRefs(useSearchStore());
 const router = useRouter()
@@ -60,26 +62,25 @@ const handleSearch = () => {
 
                 <div>
                     <Button variant='ghost' @click='toggleDark()'>
-                        <span v-if="isDark" class="pi pi-sun"></span>
-                        <span v-if="!isDark" class="pi pi-moon"></span>
+                        <Sun v-if="isDark" />
+                        <Moon v-if="!isDark" />
                     </Button>
                 </div>
 
-                <Button variant="outline"v-if="!isOpenMenu" class="md:hidden text-primary hover:text-secondary" @click="handleMenuOpen()">
-                    <span class="pi pi-bars" </span>
+                <Button variant="outline" v-if="!isOpenMenu" class="md:hidden text-primary hover:text-secondary"
+                    @click="handleMenuOpen()">
+                    <Menu />
                 </Button>
 
                 <Button v-if="isOpenMenu" @click="handleMenuClose()" variant="ghost" class="md:hidden shadow">
-                    <span class="pi pi-angle-double-up animate-bounce
-    " </span>
+                    <ArrowUpToLine class="animate-bounce" />
                 </Button>
 
                 <div class="focus-within:bg-gradient-to-tr from-primary to-secondary rounded p-[1px] hidden md:block">
                     <form @submit.prevent="handleSearch()"
                         class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center">
                         <input v-model="searchText" class="outline-none dark:bg-black" type="text"
-                            placeholder="Search sample..." 
-                            required />
+                            placeholder="Search sample..." required />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
                             <span class="pi pi-search"></span>
