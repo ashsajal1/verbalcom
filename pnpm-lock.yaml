@@ -13,10 +13,13 @@ importers:
         version: 10.10.0(vue@3.4.27(typescript@5.4.5))
       '@vueuse/motion':
         specifier: ^2.2.3
-        version: 2.2.3(rollup@4.18.0)(vue@3.4.27(typescript@5.4.5))
+        version: 2.2.3(rollup@2.79.1)(vue@3.4.27(typescript@5.4.5))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      lucide-vue-next:
+        specifier: ^0.395.0
+        version: 0.395.0(vue@3.4.27(typescript@5.4.5))
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
@@ -1878,6 +1881,11 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
+  lucide-vue-next@0.395.0:
+    resolution: {integrity: sha512-5EwqFxv6Uwi7JgQ48G8yrsFOPe6erPkjgUX7uKDbO1+B5j11duYxILpvD1ZmjmaleiK+5mOk45bv11KLYM0Ewg==}
+    peerDependencies:
+      vue: '>=3.0.1'
+
   magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
 
@@ -3578,9 +3586,9 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@nuxt/kit@3.11.2(rollup@4.18.0)':
+  '@nuxt/kit@3.11.2(rollup@2.79.1)':
     dependencies:
-      '@nuxt/schema': 3.11.2(rollup@4.18.0)
+      '@nuxt/schema': 3.11.2(rollup@2.79.1)
       c12: 1.10.0
       consola: 3.2.3
       defu: 6.1.4
@@ -3596,14 +3604,14 @@ snapshots:
       semver: 7.6.2
       ufo: 1.5.3
       unctx: 2.3.1
-      unimport: 3.7.2(rollup@4.18.0)
+      unimport: 3.7.2(rollup@2.79.1)
       untyped: 1.4.2
     transitivePeerDependencies:
       - rollup
       - supports-color
     optional: true
 
-  '@nuxt/schema@3.11.2(rollup@4.18.0)':
+  '@nuxt/schema@3.11.2(rollup@2.79.1)':
     dependencies:
       '@nuxt/ui-templates': 1.3.4
       consola: 3.2.3
@@ -3614,7 +3622,7 @@ snapshots:
       scule: 1.3.0
       std-env: 3.7.0
       ufo: 1.5.3
-      unimport: 3.7.2(rollup@4.18.0)
+      unimport: 3.7.2(rollup@2.79.1)
       untyped: 1.4.2
     transitivePeerDependencies:
       - rollup
@@ -3673,15 +3681,6 @@ snapshots:
       picomatch: 2.3.1
     optionalDependencies:
       rollup: 2.79.1
-
-  '@rollup/pluginutils@5.1.0(rollup@4.18.0)':
-    dependencies:
-      '@types/estree': 1.0.5
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-    optionalDependencies:
-      rollup: 4.18.0
-    optional: true
 
   '@rollup/rollup-android-arm-eabi@4.18.0':
     optional: true
@@ -3857,7 +3856,7 @@ snapshots:
 
   '@vueuse/metadata@10.10.0': {}
 
-  '@vueuse/motion@2.2.3(rollup@4.18.0)(vue@3.4.27(typescript@5.4.5))':
+  '@vueuse/motion@2.2.3(rollup@2.79.1)(vue@3.4.27(typescript@5.4.5))':
     dependencies:
       '@vueuse/core': 10.10.0(vue@3.4.27(typescript@5.4.5))
       '@vueuse/shared': 10.10.0(vue@3.4.27(typescript@5.4.5))
@@ -3867,7 +3866,7 @@ snapshots:
       style-value-types: 5.1.2
       vue: 3.4.27(typescript@5.4.5)
     optionalDependencies:
-      '@nuxt/kit': 3.11.2(rollup@4.18.0)
+      '@nuxt/kit': 3.11.2(rollup@2.79.1)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - rollup
@@ -4749,6 +4748,10 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
+  lucide-vue-next@0.395.0(vue@3.4.27(typescript@5.4.5)):
+    dependencies:
+      vue: 3.4.27(typescript@5.4.5)
+
   magic-string@0.25.9:
     dependencies:
       sourcemap-codec: 1.4.8
@@ -5527,9 +5530,9 @@ snapshots:
   unicorn-magic@0.1.0:
     optional: true
 
-  unimport@3.7.2(rollup@4.18.0):
+  unimport@3.7.2(rollup@2.79.1):
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
+      '@rollup/pluginutils': 5.1.0(rollup@2.79.1)
       acorn: 8.11.3
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.3
