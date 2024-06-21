@@ -4,8 +4,6 @@ import { Volume2 } from 'lucide-vue-next';
 import Button from '@/components/Button.vue'
 import { useSpeechSynthesis } from '@vueuse/core'
 
-
-
 const playWord = (word: string) => {
     const {
         isSupported,
