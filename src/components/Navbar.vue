@@ -5,7 +5,7 @@ import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
 import { useSearchStore } from '@/stores/search';
 import { useRouter } from 'vue-router';
-import { Sun, Moon, Menu, ArrowUpToLine } from 'lucide-vue-next';
+import { Sun, Moon, Menu, ArrowUpToLine, Search } from 'lucide-vue-next';
 
 const searchStore = useSearchStore();
 const { searchText } = storeToRefs(useSearchStore());
@@ -83,7 +83,7 @@ const handleSearch = () => {
                             placeholder="Search sample..." required />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
-                            <span class="pi pi-search"></span>
+                            <Search />
                         </button>
                     </form>
                 </div>
@@ -100,7 +100,7 @@ const handleSearch = () => {
                             placeholder="Search sample..." required />
                         <button
                             class="rounded bg-gradient-to-tr from-primary to-secondary p-1 text-sm text-white text-center flex items-center justify-between">
-                            <span class="pi pi-search"></span>
+                            <Search />
                         </button>
                     </form>
                 </div>
