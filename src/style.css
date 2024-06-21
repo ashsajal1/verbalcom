@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.g-text {
+    @apply bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent select-none
+}

@@ -6,6 +6,7 @@ import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useSearchStore } from '@/stores/search';
 import Button from '@/components/Button.vue';
+import HeroSection from '@/components/HeroSection.vue';
 
 const router = useRouter()
 const { hasSearched, searchText } = storeToRefs(useSearchStore());
@@ -34,6 +35,7 @@ const handleReset = () => {
 </script>
 
 <template>
+    <HeroSection />
     <div class="border p-4 mb-4 rounded dark:border-gray-700 flex items-center justify-between" v-if="hasSearched">
         <p>Searched items for : <span class="font-bold">{{ searchQueryText }}</span></p>
 
