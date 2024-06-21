@@ -7,6 +7,8 @@
         </div>
         <p class="border rounded p-4 my-3 flex items-center gap-2" v-if="feedback"
             :class="{ 'bg-green-200 text-green-800': feedback === 'Correct!', 'bg-red-200 text-red-800': feedback.startsWith('Wrong!') }">
+            <Check v-if="feedback === 'Correct!'" />
+            <X v-if="feedback.startsWith('Wrong!')" />
             {{ feedback }}
         </p>
         <Button class="w-full" v-if="feedback" @click="nextQuestion">Next Question</Button>
@@ -18,7 +20,7 @@ import { ref } from 'vue';
 import { vocabulary } from '@/lib/vocabulary';
 import type { Vocabulary } from '@/lib/vocabulary/types';
 import Button from '@/components/Button.vue';
-import { CircleAlert } from 'lucide-vue-next'
+import { Check, X } from 'lucide-vue-next'
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = ref<any>(null);
