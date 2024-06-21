@@ -18,6 +18,16 @@ const playWord = (word: string) => {
 
     speak()
 }
+const playWordWithoutAlert = (word: string) => {
+    const {
+        isSupported,
+        speak,
+    } = useSpeechSynthesis(word)
+
+    speak()
+}
+
+
 </script>
 
 <template>
@@ -27,8 +37,12 @@ const playWord = (word: string) => {
         <div class="flex items-center justify-between p-3 gap-2 rounded border" v-for="(item, index) in vocabulary"
             :key="index">
             <div class="flex items-center gap-2">
-                <div>{{ item.en }}</div>
-                <div>{{ item.bn }}</div>
+                <Button @click="playWordWithoutAlert(`${item.en}`)" variant="ghost">
+                    <div>{{ item.en }}</div>
+                </Button>
+                <Button @click="playWordWithoutAlert(`${item.bn}`)" variant="ghost">
+                    <div>{{ item.bn }}</div>
+                </Button>
             </div>
             <div>
                 <Button @click="playWord(`${item.en} ${item.bn}`)" variant="ghost">
