@@ -9,9 +9,12 @@ import Button from '@/components/Button.vue'
             <Button variant="outline">
                 Practice sentences
             </Button>
-            <Button variant="outline">
-                Practice vocabulary
-            </Button>
+            
+            <router-link to='/vocabulary'>
+                <Button variant="outline">
+                    Practice vocabulary
+                </Button>
+            </router-link>
         </div>
     </div>
 </template>
