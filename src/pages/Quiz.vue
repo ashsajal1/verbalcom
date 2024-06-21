@@ -1,7 +1,14 @@
 <template>
     <h1 class="font-bold text-3xl g-text text-center mb-4">Quiz Page</h1>
     <div class="md:px-72" v-if="currentQuestion">
-        <p class="text-2xl font-bold py-2">{{ currentQuestion.question }}</p>
+        <div
+            class="text-2xl font-bold py-2 flex items-center justify-between border-b dark:border-b-gray-800 mb-4 pb-2">
+            <span>{{ currentQuestion.question
+                }}</span>
+            <Button variant="ghost">
+                <Volume1 @click="speakSentence(currentQuestion.question)" />
+            </Button>
+        </div>
         <div class="flex flex-col gap-2" v-for="(option, index) in currentQuestion.options" :key="index">
             <Button variant="outline" class="mt-2" @click="checkAnswer(option)">{{ option }}</Button>
         </div>
@@ -20,7 +27,21 @@ import { ref } from 'vue';
 import { vocabulary } from '@/lib/vocabulary';
 import type { Vocabulary } from '@/lib/vocabulary/types';
 import Button from '@/components/Button.vue';
-import { Check, X } from 'lucide-vue-next'
+import { Check, X, Volume1 } from 'lucide-vue-next';
+import { useSpeechSynthesis } from '@vueuse/core';
+
+const speakSentence = (word: string) => {
+    const {
+        isSupported,
+        speak,
+    } = useSpeechSynthesis(word)
+
+    if (!isSupported) {
+        alert("Speech Synthesis is not supported in your browser!")
+    }
+
+    speak()
+}
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = ref<any>(null);
