@@ -1,24 +1,38 @@
 <template>
-    <h1 class="font-bold text-3xl g-text text-center mb-4">Quiz Page</h1>
-    <div class="md:px-72" v-if="currentQuestion">
-        <div
-            class="text-2xl font-bold py-2 flex items-center justify-between border-b dark:border-b-gray-800 mb-4 pb-2">
-            <span>{{ currentQuestion.question
-                }}</span>
-            <Button variant="ghost">
-                <Volume1 @click="speakSentence(currentQuestion.question)" />
-            </Button>
+    <div v-if="feedback !== 'Quiz Finished!'">
+        <h1 class="font-bold text-3xl g-text text-center mb-4">Quiz Page</h1>
+        <div class="md:px-72" v-if="currentQuestion">
+            <div
+                class="text-2xl font-bold py-2 flex items-center justify-between border-b dark:border-b-gray-800 mb-4 pb-2">
+                <span>{{ currentQuestion.question
+                    }}</span>
+                <Button variant="ghost">
+                    <Volume1 @click="speakSentence(currentQuestion.question)" />
+                </Button>
+            </div>
+            <div class="flex flex-col gap-2" v-for="(option, index) in currentQuestion.options" :key="index">
+                <Button variant="outline" class="mt-2" @click="checkAnswer(option)">{{ option }}</Button>
+            </div>
+            <p class="border rounded p-4 my-3 flex items-center gap-2" v-if="feedback"
+                :class="{ 'bg-green-200 text-green-800': feedback === 'Correct!', 'bg-red-200 text-red-800': feedback.startsWith('Wrong!') }">
+                <Check v-if="feedback === 'Correct!'" />
+                <X v-if="feedback.startsWith('Wrong!')" />
+                {{ feedback }}
+            </p>
+            <Button class="w-full" v-if="feedback" @click="nextQuestion">Next Question</Button>
         </div>
-        <div class="flex flex-col gap-2" v-for="(option, index) in currentQuestion.options" :key="index">
-            <Button variant="outline" class="mt-2" @click="checkAnswer(option)">{{ option }}</Button>
+    </div>
+
+    <div class="flex gap-2 flex-col" v-if="feedback === 'Quiz Finished!'">
+        <h1 class="w-full text-center font-light mb-4 text-3xl">Quiz finished!</h1>
+        <div class="flex flex-col md:flex-row gap-2 w-full">
+            <RouterLink to='/'>
+                <Button variant="outline" class="w-full">Home</Button>
+            </RouterLink>
+            <RouterLink to='/'>
+                <Button class="w-full">Restart</Button>
+            </RouterLink>
         </div>
-        <p class="border rounded p-4 my-3 flex items-center gap-2" v-if="feedback"
-            :class="{ 'bg-green-200 text-green-800': feedback === 'Correct!', 'bg-red-200 text-red-800': feedback.startsWith('Wrong!') }">
-            <Check v-if="feedback === 'Correct!'" />
-            <X v-if="feedback.startsWith('Wrong!')" />
-            {{ feedback }}
-        </p>
-        <Button class="w-full" v-if="feedback" @click="nextQuestion">Next Question</Button>
     </div>
 </template>
 
