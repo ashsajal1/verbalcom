@@ -7,6 +7,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
 import Practice from "./pages/Practice.vue";
+import Vocabulary from "./pages/Vocabulary.vue";
 import NotFound from "./pages/NotFound.vue";
 import { createPinia } from 'pinia'
 
@@ -14,6 +15,7 @@ const routes = [
   { path: "/", name: 'home', component: Home },
   { path: "/about", component: About },
   { path: "/practice", component: Practice },
+  { path: "/vocabulary", component: Vocabulary },
   { path: "/:patchMatch(.*)*", component: NotFound },
 ];
 
