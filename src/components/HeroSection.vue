@@ -8,10 +8,12 @@ import { MicVocal } from 'lucide-vue-next';
     <div class="w-full grid place-items-center py-12">
         <h1 class="mb-4 text-3xl font-bold g-text">Pratice to learn Verbal Communicaiton!</h1>
         <div class="flex items-center gap-3">
-            <Button class="flex items-center gap-2" variant="outline">
-                <MicVocal />
-                Practice sentences
-            </Button>
+            <router-link to='/quiz'>
+                <Button class="flex items-center gap-2" variant="outline">
+                    <MicVocal />
+                    Play Quiz
+                </Button>
+            </router-link>
 
             <router-link to='/vocabulary'>
                 <Button class="flex items-center gap-2" variant="outline">
