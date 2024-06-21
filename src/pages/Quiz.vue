@@ -26,10 +26,10 @@
     <div class="flex gap-2 flex-col" v-if="feedback === 'Quiz Finished!'">
         <h1 class="w-full text-center font-light mb-4 text-3xl">Quiz finished!</h1>
         <div class="flex flex-col md:flex-row gap-2 w-full">
-            <RouterLink to='/'>
+            <RouterLink class="w-full" to='/'>
                 <Button variant="outline" class="w-full">Home</Button>
             </RouterLink>
-            <RouterLink to='/'>
+            <RouterLink class="w-full" to='/'>
                 <Button class="w-full">Restart</Button>
             </RouterLink>
         </div>
