@@ -7,7 +7,7 @@ import Button from '@/components/Button.vue'
         <h1 class="mb-4 text-3xl font-bold g-text">Pratice to learn Verbal Communicaiton!</h1>
         <div class="flex items-center gap-3">
             <Button variant="outline">
-                Practice sentencese
+                Practice sentences
             </Button>
             <Button variant="outline">
                 Practice vocabulary
