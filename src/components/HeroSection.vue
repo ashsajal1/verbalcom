@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import Button from '@/components/Button.vue'
-import { AudioLines } from 'lucide-vue-next';
-import { MicVocal } from 'lucide-vue-next';
+import { AudioLines, Puzzle } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -10,7 +9,7 @@ import { MicVocal } from 'lucide-vue-next';
         <div class="flex items-center gap-3">
             <router-link to='/quiz'>
                 <Button class="flex items-center gap-2" variant="outline">
-                    <MicVocal />
+                    <Puzzle />
                     Play Quiz
                 </Button>
             </router-link>
