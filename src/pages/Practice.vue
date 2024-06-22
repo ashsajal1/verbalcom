@@ -100,7 +100,7 @@ function refreshPage() {
 }
 
 const showTranslation = ref(false)
-import { Languages } from 'lucide-vue-next'
+import { Languages, Volume1, VolumeX } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -113,11 +113,11 @@ import { Languages } from 'lucide-vue-next'
             </div>
 
             <Button v-if="!isPlaying" @click="handleClick" variant="ghost">
-                <span class="pi pi-volume-down"></span>
+                <Volume1 />
             </Button>
 
             <Button v-if="isPlaying" @click="stop()" variant="ghost">
-                <span class="pi pi-volume-off"></span>
+                <VolumeX />
             </Button>
 
             <Button v-if="praciceSample.bn" class="text-sm flex items-center py-1 gap-2" variant="outline"
