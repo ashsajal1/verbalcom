@@ -5,14 +5,21 @@ import Button from '@/components/Button.vue'
 import { useSpeechSynthesis } from '@vueuse/core'
 import { computed, ref, watch } from 'vue';
 
-const searchedWord = ref('')
+const searchedWord = ref('');
+const selectedTopics = ref<string[]>([]);
+const availableTopics = new Set(vocabulary.map(word => word.category))
+
 const words = computed(() => {
-    if (searchedWord.value === '') {
-        return vocabulary;
-    }
-    return vocabulary.filter(word =>
-        word.en.includes(searchedWord.value) || word.bn.includes(searchedWord.value)
-    );
+    return vocabulary.filter(word => {
+        const matchesSearch = searchedWord.value === '' ||
+            word.en.includes(searchedWord.value) ||
+            word.bn.includes(searchedWord.value);
+
+        const matchesTopics = selectedTopics.value.length === 0 ||
+            selectedTopics.value.includes(word.category);
+
+        return matchesSearch && matchesTopics;
+    });
 });
 
 watch(
@@ -49,14 +56,32 @@ const playWordWithoutAlert = (word: string) => {
 <template>
     <h1 class="text-3xl font-bold text-center mb-4 g-text">Practice vocabulary</h1>
 
-    <div class="pt-3 pb-6 flex flex-col md:flex-row w-full">
-        <div class="flex items-center gap-2">
-            <input v-model="searchedWord" class="p-2 border w-full rounded" placeholder="Search word" type="text">
-            <Button>Search</Button>
+    <div class="flex flex-col md:flex-row items-center">
+        <div class="pt-3 pb-6 flex flex-col md:flex-row w-full">
+            <div class="flex items-center gap-2">
+                <input v-model="searchedWord" class="p-2 border w-full rounded dark:bg-black dark:border-gray-800"
+                    placeholder="Search word" type="text">
+                <Button>Search</Button>
+            </div>
+        </div>
+
+        <div class="mb-4 w-full">
+            <p class="py-2 text-lg font-bold mb-2">Filter words by specific topics</p>
+            <div>
+                <select v-model="selectedTopics" multiple
+                    class="p-2 border w-full rounded dark:bg-black dark:border-gray-800">
+                    <option :class="{ 'bg-primary': selectedTopics.includes(topic) }"
+                        class="inline hover:bg-secondary mx-2 p-1 text-sm rounded" v-for="topic in availableTopics"
+                        :key="topic" :value="topic">
+                        {{ topic }}
+                    </option>
+                </select>
+            </div>
         </div>
     </div>
 
-    <div class="rounded flex items-center justify-between border text-lg font-bold p-4 shadow-sm" v-if="words.length === 0">
+    <div class="rounded flex items-center justify-between border text-lg font-bold p-4 shadow-sm"
+        v-if="words.length === 0">
         <div>
             <span>No word found called </span>
             <span class="text-secondary">{{ searchedWord }}</span>
