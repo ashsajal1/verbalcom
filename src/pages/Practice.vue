@@ -133,6 +133,7 @@ import { Languages } from 'lucide-vue-next'
             <p v-if="showTranslation"> {{ praciceSample?.bn }}</p>
         </div>
 
+        <div class="border border-gray-100 dark:border-gray-900 rounded-full my-4"></div>
         <div class="text-sm py-4 flex items-center gap-3">
             <div>
                 <span>Accuracy : </span>
