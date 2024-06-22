@@ -39,7 +39,7 @@
         <span class="text-secondary font-bold">Explanaiton : </span>
         {{ currentQuestion.explanation }}
     </div>
-    <div class="p-2 mt-1" v-motion-pop v-if="currentQuestion.explanation">
+    <div class="p-2 mt-1" v-motion-pop v-if="currentQuestion.exampleUsage">
         <span class="text-secondary font-bold">Example Sentence : </span>
         {{ currentQuestion.exampleUsage }}
     </div>
