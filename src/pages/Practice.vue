@@ -118,13 +118,14 @@ const showTranslation = ref(false)
             <Button v-if="isPlaying" @click="stop()" variant="ghost">
                 <span class="pi pi-volume-off"></span>
             </Button>
-        </div>
 
-        <div class="flex flex-col gap-2" v-if="praciceSample.bn">
-            <Button variant="outline" @click="showTranslation = !showTranslation">
+            <Button v-if="praciceSample.bn" class="text-sm py-1" variant="outline" @click="showTranslation = !showTranslation">
                 <span v-if="!showTranslation">Show translation</span>
                 <span v-if="showTranslation">Hide translation</span>
             </Button>
+        </div>
+
+        <div class="flex flex-col gap-2" v-if="praciceSample.bn">
             <p v-if="showTranslation"> {{ praciceSample?.bn }}</p>
         </div>
 
