@@ -48,7 +48,7 @@ const handleSearch = () => {
 <template>
     <header
         class="flex flex-col dark:bg-black items-center justify-between p-4 bg-white w-full z-10 border-b dark:border-b-gray-700 fixed top-0 transition-all duration-300"
-        :class="{ 'backdrop-blur bg-opacity-60': isScrolled }">
+        :class="{ 'backdrop-blur-md bg-opacity-60 dark:bg-opacity-80': isScrolled }">
 
         <div class="flex items-center justify-between w-full">
 
