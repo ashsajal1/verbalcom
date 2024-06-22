@@ -104,6 +104,15 @@ const handleSearch = () => {
                         </button>
                     </form>
                 </div>
+
+                <div class="w-full mt-4 flex flex-col gap-2">
+                    <RouterLink @click="isOpenMenu = false" class="w-full" to="/quiz">
+                        <Button class="w-full">Play quiz</Button>
+                    </RouterLink>
+                    <RouterLink @click="isOpenMenu = false" class="w-full" to="/vocabulary">
+                        <Button class="w-full">Practuce Vocabulary</Button>
+                    </RouterLink>
+                </div>
             </div>
         </template>
 
