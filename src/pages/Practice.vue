@@ -98,6 +98,8 @@ const handleSubmit = () => {
 function refreshPage() {
     window.location.reload();
 }
+
+const showTranslation = ref(false)
 </script>
 
 <template>
@@ -118,6 +120,14 @@ function refreshPage() {
             </Button>
         </div>
 
+        <div class="flex flex-col gap-2" v-if="praciceSample.bn">
+            <Button variant="outline" @click="showTranslation = !showTranslation">
+                <span v-if="!showTranslation">Show translation</span>
+                <span v-if="showTranslation">Hide translation</span>
+            </Button>
+            <p v-if="showTranslation"> {{ praciceSample?.bn }}</p>
+        </div>
+
         <div class="text-sm py-4 flex items-center gap-3">
             <div>
                 <span>Accuracy : </span>
@@ -133,7 +143,8 @@ function refreshPage() {
             </div>
         </div>
 
-        <TextArea @keyup.enter="handleSubmit" :class="{ 'border-red-500': isInputEmpty }" v-model="result" placeholder="Write text"></TextArea>
+        <TextArea @keyup.enter="handleSubmit" :class="{ 'border-red-500': isInputEmpty }" v-model="result"
+            placeholder="Write text"></TextArea>
         <Button @click="handleSubmit()" class="w-full mt-3">Submit</Button>
 
         <div v-if="!speech.isSupported" class="flex items-center gap-4">
