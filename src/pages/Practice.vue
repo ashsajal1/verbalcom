@@ -100,6 +100,7 @@ function refreshPage() {
 }
 
 const showTranslation = ref(false)
+import { Languages } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -119,7 +120,10 @@ const showTranslation = ref(false)
                 <span class="pi pi-volume-off"></span>
             </Button>
 
-            <Button v-if="praciceSample.bn" class="text-sm py-1" variant="outline" @click="showTranslation = !showTranslation">
+            <Button v-if="praciceSample.bn" class="text-sm flex items-center py-1 gap-2" variant="outline"
+                @click="showTranslation = !showTranslation">
+                <Languages class="h-5 w-5" />
+
                 <span v-if="!showTranslation">Show translation</span>
                 <span v-if="showTranslation">Hide translation</span>
             </Button>
