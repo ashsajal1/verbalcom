@@ -3,4 +3,5 @@ export type Vocabulary = {
   bn: string;
   category: string;
   explanation?: string;
+  example?: string;
 };
