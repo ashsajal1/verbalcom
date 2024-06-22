@@ -34,6 +34,15 @@
             </RouterLink>
         </div>
     </div>
+
+    <div class="p-2 mt-4" v-motion-pop v-if="currentQuestion.explanation">
+        <span class="text-secondary font-bold">Explanaiton : </span>
+        {{ currentQuestion.explanation }}
+    </div>
+    <div class="p-2 mt-1" v-motion-pop v-if="currentQuestion.explanation">
+        <span class="text-secondary font-bold">Example Sentence : </span>
+        {{ currentQuestion.exampleUsage }}
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -97,6 +106,8 @@ const generateQuestions = () => {
     return vocabulary.map(word => ({
         question: `What is the meaning of ${word.en}?`,
         answer: word.bn,
+        explanation: word.explanation,
+        exampleUsage: word.example,
         options: generateRandomOptions(word.bn, vocabulary)
     }));
 };
