@@ -120,12 +120,16 @@ import { Languages, Volume1, VolumeX } from 'lucide-vue-next'
                 <VolumeX />
             </Button>
 
-            <Button v-if="praciceSample.bn" class="text-sm flex items-center py-1 gap-2" variant="outline"
+            <Button v-if="praciceSample.bn && !showTranslation" class="text-sm flex items-center py-1 gap-2" variant="outline"
                 @click="showTranslation = !showTranslation">
                 <Languages class="h-5 w-5" />
-
-                <span v-if="!showTranslation">Show translation</span>
-                <span v-if="showTranslation">Hide translation</span>
+                <span>Show translation</span>
+            </Button>
+            
+            <Button v-if="praciceSample.bn && showTranslation" class="text-sm flex items-center py-1 gap-2" variant="outline"
+                @click="showTranslation = !showTranslation">
+                <Languages class="h-5 w-5" />
+                <span>Hide translation</span>
             </Button>
         </div>
 
