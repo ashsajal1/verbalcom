@@ -51,7 +51,7 @@ const playWordWithoutAlert = (word: string) => {
 }
 
 const handleTopics = (topic: string) => {
-    if(topic.toLowerCase() === 'all') {
+    if (topic.toLowerCase() === 'all') {
         selectedTopics.value = [];
         return;
     }
@@ -67,6 +67,10 @@ const handleTopics = (topic: string) => {
 <template>
     <h1 class="text-3xl font-bold text-center mb-4 g-text">Practice vocabulary</h1>
 
+    <p class="py-2 text-center font-bold text-lg mb-2">Search or Filter words by specific topics</p>
+
+    <div class="border dark:border-gray-800 w-full mb-3"></div>
+
     <div class="flex flex-col md:flex-row items-center">
         <div class="pt-3 pb-6 flex flex-col md:flex-row w-full">
             <div class="flex items-center gap-2">
@@ -76,8 +80,9 @@ const handleTopics = (topic: string) => {
             </div>
         </div>
 
+        
+
         <div class="mb-4 w-full">
-            <p class="py-2 text-lg font-bold mb-2">Filter words by specific topics</p>
             <div>
                 <div class="p-2 border w-full rounded dark:bg-black dark:border-gray-800">
                     <div @click="handleTopics('all')" :class="{ 'bg-primary': selectedTopics.length === 0 }"
@@ -106,8 +111,8 @@ const handleTopics = (topic: string) => {
     </div>
 
     <div class="flex gap-2 flex-col">
-        <div class="flex items-center justify-between p-3 gap-2 rounded border dark:border-gray-800" v-for="(item, index) in words"
-            :key="index">
+        <div class="flex items-center justify-between p-3 gap-2 rounded border dark:border-gray-800"
+            v-for="(item, index) in words" :key="index">
             <div class="flex items-center gap-2">
                 <Button @click="playWordWithoutAlert(`${item.en}`)" variant="ghost">
                     <div>{{ item.en }}</div>
