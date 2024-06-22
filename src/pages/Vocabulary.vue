@@ -50,6 +50,17 @@ const playWordWithoutAlert = (word: string) => {
     speak()
 }
 
+const handleTopics = (topic: string) => {
+    if(topic.toLowerCase() === 'all') {
+        selectedTopics.value = [];
+        return;
+    }
+    if (selectedTopics.value.includes(topic)) {
+        selectedTopics.value = selectedTopics.value.filter(selectedTopic => topic != selectedTopic)
+    } else {
+        selectedTopics.value = [...selectedTopics.value, topic]
+    }
+}
 
 </script>
 
@@ -68,14 +79,18 @@ const playWordWithoutAlert = (word: string) => {
         <div class="mb-4 w-full">
             <p class="py-2 text-lg font-bold mb-2">Filter words by specific topics</p>
             <div>
-                <select v-model="selectedTopics" multiple
-                    class="p-2 border w-full rounded dark:bg-black dark:border-gray-800">
-                    <option :class="{ 'bg-primary': selectedTopics.includes(topic) }"
-                        class="inline hover:bg-secondary mx-2 p-1 text-sm rounded" v-for="topic in availableTopics"
-                        :key="topic" :value="topic">
+                <div class="p-2 border w-full rounded dark:bg-black dark:border-gray-800">
+                    <div @click="handleTopics('all')" :class="{ 'bg-primary': selectedTopics.length === 0 }"
+                        class="inline cursor-pointer hover:bg-secondary mx-2 p-1 text-sm rounded">
+                        All
+                    </div>
+
+                    <div @click="handleTopics(topic)" :class="{ 'bg-primary': selectedTopics.includes(topic) }"
+                        class="inline cursor-pointer hover:bg-secondary mx-2 p-1 text-sm rounded"
+                        v-for="topic in availableTopics" :key="topic" :value="topic">
                         {{ topic }}
-                    </option>
-                </select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
