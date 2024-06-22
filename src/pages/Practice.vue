@@ -129,7 +129,7 @@ import { Languages } from 'lucide-vue-next'
             </Button>
         </div>
 
-        <div class="flex flex-col gap-2" v-if="praciceSample.bn">
+        <div v-motion-pop-visible-once class="flex flex-col gap-2 bg-primary p-3 rounded text-slate-200" v-if="showTranslation">
             <p v-if="showTranslation"> {{ praciceSample?.bn }}</p>
         </div>
 
