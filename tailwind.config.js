@@ -8,6 +8,9 @@ module.exports = {
         primary: teal[600],
         secondary: violet[600],
       },
+      fontFamily: {
+        ubuntu: ['Ubuntu', 'sans-serif'],
+      },
     },
   },
   plugins: [],
