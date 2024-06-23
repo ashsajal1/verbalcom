@@ -19,12 +19,6 @@ example?: string; -->
     <div>
         <p v-if="searchedWord">Showing explanation for word <span class="text-primary">{{ searchedWord }}</span></p>
 
-        <div v-if="!wordExplanation">
-            <p class="text-xl font-bold my-3">Word is not found in our dictionary!</p>
-            <p class="text-lg">If you are a developer, you can add "{{ searchedWord }}" word. Here is the github repo
-                url : <a class="text-primary" href="https://github.com/ashsajal1/verbalcom" target="_blank">VerbalCom
-                    github repo</a></p>
-        </div>
         <div v-if="wordExplanation">
             <p><span class="font-bold">Meaning in Bengali</span> : {{ wordExplanation?.bn }}</p>
 
@@ -49,6 +43,13 @@ example?: string; -->
             <ol start="1">
                 <li class="border-b dark:border-b-gray-800" v-for="(example, index) in moreExample" :key="index">{{ example.text }}</li>
             </ol>
+        </div>
+
+        <div v-if="!wordExplanation">
+           
+            <p class="text-sm mt-6">More info about the word is not found in our dictionary! If you are a developer, you can add "{{ searchedWord }}" word. Here is the github repo
+                url : <a class="text-primary" href="https://github.com/ashsajal1/verbalcom" target="_blank">VerbalCom
+                    github repo</a></p>
         </div>
     </div>
 </template>
