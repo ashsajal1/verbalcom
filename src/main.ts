@@ -10,6 +10,7 @@ import Practice from "./pages/Practice.vue";
 import Vocabulary from "./pages/Vocabulary.vue";
 import NotFound from "./pages/NotFound.vue";
 import Quiz from "./pages/Quiz.vue";
+import Explanation from "./pages/Explanation.vue";
 import { createPinia } from 'pinia'
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
   { path: "/practice", component: Practice },
   { path: "/vocabulary", component: Vocabulary },
   { path: "/quiz", component: Quiz },
+  { path: "/explanation", component: Explanation },
   { path: "/:patchMatch(.*)*", component: NotFound },
 ];
 
