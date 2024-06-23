@@ -12,7 +12,6 @@ const searchStore = useSearchStore();
 const { searchText } = storeToRefs(useSearchStore());
 const router = useRouter()
 const route = useRoute()
-console.log(route.path)
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
