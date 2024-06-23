@@ -1,9 +1,12 @@
 <script lang="ts" setup>
+import { communicationSamples } from '@/lib/texts';
 import { vocabulary } from '@/lib/vocabulary';
 import { useUrlSearchParams } from '@vueuse/core'
 
 const searchedWord = useUrlSearchParams('history').word;
 const wordExplanation = vocabulary.filter(word => word.en === searchedWord)[0]
+const moreExample = communicationSamples.filter(sample => sample.text.toLowerCase().includes((searchedWord as string).toLowerCase()));
+console.log(moreExample)
 </script>
 
 <!-- en: string;
@@ -18,7 +21,9 @@ example?: string; -->
 
         <div v-if="!wordExplanation">
             <p class="text-xl font-bold my-3">Word is not found in our dictionary!</p>
-            <p class="text-lg">If you are a developer, you can add "{{ searchedWord }}" word. Here is the github repo url : <a class="text-primary" href="https://github.com/ashsajal1/verbalcom" target="_blank">VerbalCom github repo</a></p>
+            <p class="text-lg">If you are a developer, you can add "{{ searchedWord }}" word. Here is the github repo
+                url : <a class="text-primary" href="https://github.com/ashsajal1/verbalcom" target="_blank">VerbalCom
+                    github repo</a></p>
         </div>
         <div v-if="wordExplanation">
             <p><span class="font-bold">Meaning in Bengali</span> : {{ wordExplanation?.bn }}</p>
@@ -37,6 +42,13 @@ example?: string; -->
                 <h3 class="text-xl font-bold">Word category : </h3>
                 <span>{{ wordExplanation.category }} realated word.</span>
             </div>
+        </div>
+
+        <div v-if="moreExample.length !== 0" class="mt-4">
+            <p class="text-lg font-bold">Available example : </p>
+            <ol start="1">
+                <li class="border-b dark:border-b-gray-800" v-for="(example, index) in moreExample" :key="index">{{ example.text }}</li>
+            </ol>
         </div>
     </div>
 </template>
