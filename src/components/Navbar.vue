@@ -5,11 +5,14 @@ import Button from './Button.vue';
 import { useDark, useToggle } from '@vueuse/core'
 import { useSearchStore } from '@/stores/search';
 import { useRouter } from 'vue-router';
-import { Sun, Moon, Menu, ArrowUpToLine, Search } from 'lucide-vue-next';
+import { useRoute } from 'vue-router';
+import { Sun, Moon, Menu, ArrowUpToLine, Search, Puzzle } from 'lucide-vue-next';
 
 const searchStore = useSearchStore();
 const { searchText } = storeToRefs(useSearchStore());
 const router = useRouter()
+const route = useRoute()
+console.log(route.path)
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -66,6 +69,12 @@ const handleSearch = () => {
                         <Moon v-if="!isDark" />
                     </Button>
                 </div>
+
+                <RouterLink v-if="route.path !== '/quiz'" to="/quiz">
+                    <Button>
+                        <Puzzle class="h-5 w-5" />
+                    </Button>
+                </RouterLink>
 
                 <Button variant="outline" v-if="!isOpenMenu" class="md:hidden text-primary hover:text-secondary"
                     @click="handleMenuOpen()">

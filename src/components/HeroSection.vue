@@ -9,7 +9,7 @@ import { AudioLines, Puzzle } from 'lucide-vue-next';
         <div class="flex items-center gap-3">
             <router-link to='/quiz'>
                 <Button class="flex items-center gap-2" variant="outline">
-                    <Puzzle />
+                    <Puzzle class="h-5 w-5" />
                     Play Quiz
                 </Button>
             </router-link>
