@@ -1,6 +1,9 @@
 <template>
     <div v-if="feedback !== 'Quiz Finished!'">
         <h1 class="font-bold text-3xl g-text text-center mb-4">Quiz Page</h1>
+        <div>
+            Cannot answer well? <RouterLink class="text-primary p-2 hover:bg-primary hover:text-slate-100 rounded" to="/vocabulary">Click & practice vocabulary!</RouterLink>
+        </div>
         <div class="md:px-72" v-if="currentQuestion">
             <div
                 class="text-2xl font-bold py-2 flex items-center justify-between border-b dark:border-b-gray-800 mb-4 pb-2">
