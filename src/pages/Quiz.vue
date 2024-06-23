@@ -1,7 +1,7 @@
 <template>
     <div v-if="feedback !== 'Quiz Finished!'">
         <h1 class="font-bold text-3xl g-text text-center mb-4">Quiz Page</h1>
-        <div>
+        <div class="grid place-items-center">
             Cannot answer well? <RouterLink class="text-primary p-2 hover:bg-primary hover:text-slate-100 rounded" to="/vocabulary">Click & practice vocabulary!</RouterLink>
         </div>
         <div class="md:px-72" v-if="currentQuestion">
