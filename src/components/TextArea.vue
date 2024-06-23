@@ -1,6 +1,6 @@
 <template>
     <textarea v-model="value" :placeholder="placeholder"
-        class="p-2 rounded border w-full dark:bg-black outline-none dark:border-gray-700"></textarea>
+        class="p-2 rounded border w-full dark:bg-gray-900 outline-none dark:border-gray-700"></textarea>
 </template>
 
 <script setup lang="ts">
