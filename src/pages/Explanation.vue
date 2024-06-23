@@ -41,7 +41,9 @@ example?: string; -->
         <div v-if="moreExample.length !== 0" class="mt-4">
             <p class="text-lg font-bold">Available example : </p>
             <ol start="1">
-                <li class="border-b dark:border-b-gray-800" v-for="(example, index) in moreExample" :key="index">{{ example.text }}</li>
+                <li v-for="(example, index) in moreExample" :key="index">
+                    <span class="border-b dark:border-b-gray-800">{{ example.text }}</span>
+                </li>
             </ol>
         </div>
 
