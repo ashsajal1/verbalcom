@@ -4,7 +4,6 @@ import { useUrlSearchParams } from '@vueuse/core'
 
 const searchedWord = useUrlSearchParams('history').word;
 const wordExplanation = vocabulary.filter(word => word.en === searchedWord)[0]
-console.log(wordExplanation)
 </script>
 
 <!-- en: string;
