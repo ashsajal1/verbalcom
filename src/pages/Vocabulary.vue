@@ -66,9 +66,10 @@ const handleTopics = (topic: string) => {
 
 <template>
     <h1 class="text-3xl font-bold text-center mb-4 g-text">Practice vocabulary</h1>
-    
+
     <div class="grid place-items-center">
-        Well practiced? <RouterLink class="text-primary p-2 hover:bg-primary hover:text-slate-100 rounded" to="/quiz">Click & play quiz on vocabulary!</RouterLink>
+        Well practiced? <RouterLink class="text-primary p-2 hover:bg-primary hover:text-slate-100 rounded" to="/quiz">
+            Click & play quiz on vocabulary!</RouterLink>
     </div>
 
     <p class="py-2 text-center font-bold text-lg mb-2">Search or Filter words by specific topics</p>
@@ -83,8 +84,6 @@ const handleTopics = (topic: string) => {
                 <Button>Search</Button>
             </div>
         </div>
-
-        
 
         <div class="mb-4 w-full">
             <div>
@@ -114,6 +113,7 @@ const handleTopics = (topic: string) => {
         <Button variant="outline" @click="searchedWord = ''">Reset</Button>
     </div>
 
+    <!-- Main content -->
     <div class="flex gap-2 flex-col">
         <div class="flex items-center justify-between p-3 gap-2 rounded border dark:border-gray-800"
             v-for="(item, index) in words" :key="index">
@@ -125,7 +125,10 @@ const handleTopics = (topic: string) => {
                     <div>{{ item.bn }}</div>
                 </Button>
             </div>
-            <div>
+            <div class="flex items-center">
+                <RouterLink :to="`/explanation?word=${item.en}`">
+                    <Button class="p-1 text-sm font-normal" variant="outline">Explanation</Button>
+                </RouterLink>
                 <Button @click="playWord(`${item.en} ${item.bn}`)" variant="ghost">
                     <Volume2 />
                 </Button>
