@@ -18,20 +18,22 @@ example?: string; -->
         <p v-if="searchedWord">Showing explanation for word <span class="text-primary">{{ searchedWord }}</span></p>
 
         <div>
-            <p>Meaning in Bengali : {{ wordExplanation?.bn }}</p>
+            <p><span class="font-bold">Meaning in Bengali</span> : {{ wordExplanation?.bn }}</p>
 
-            <p v-if="wordExplanation.explanation">
-                Explanation :
+            <div class="border-b dark:border-b-gray-700 pb-2 my-3" v-if="wordExplanation.explanation">
+                <h3 class="text-xl font-bold">Explanation :</h3>
                 <span>{{ wordExplanation.explanation }}</span>
-            </p>
-            <p v-if="wordExplanation.example">
-                Example usage :
+            </div>
+
+            <div class="border-b dark:border-b-gray-700 pb-2 mb-3" v-if="wordExplanation.example">
+                <h3 class="text-xl font-bold">Example usage :</h3>
                 <span>{{ wordExplanation.example }}</span>
-            </p>
-            <p v-if="wordExplanation.category">
-                Word category :
+            </div>
+
+            <div class="pb-2 mb-3" v-if="wordExplanation.category">
+                <h3 class="text-xl font-bold">Word category : </h3>
                 <span>{{ wordExplanation.category }} realated word.</span>
-            </p>
+            </div>
         </div>
     </div>
 </template>
