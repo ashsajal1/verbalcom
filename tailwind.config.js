@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors: {
         primary: teal[600],
-        secondary: violet[600],
+        secondary: teal[900],
       },
       fontFamily: {
         ubuntu: ['Ubuntu', 'sans-serif'],
