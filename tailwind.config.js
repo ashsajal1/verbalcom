@@ -9,7 +9,7 @@ module.exports = {
         secondary: teal[900],
       },
       fontFamily: {
-        ubuntu: ['Ubuntu', 'sans-serif'],
+        ubuntu: ['Montserrat', 'sans-serif'],
       },
     },
   },
