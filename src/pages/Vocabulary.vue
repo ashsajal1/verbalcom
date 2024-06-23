@@ -79,7 +79,7 @@ const handleTopics = (topic: string) => {
     <div class="flex flex-col md:flex-row items-center">
         <div class="pt-3 pb-6 flex flex-col md:flex-row w-full">
             <div class="flex items-center gap-2">
-                <input v-model="searchedWord" class="p-2 border w-full rounded dark:bg-black dark:border-gray-800"
+                <input v-model="searchedWord" class="p-2 border w-full rounded dark:bg-gray-900 dark:border-gray-800"
                     placeholder="Search word" type="text">
                 <Button>Search</Button>
             </div>
@@ -87,7 +87,7 @@ const handleTopics = (topic: string) => {
 
         <div class="mb-4 w-full">
             <div>
-                <div class="p-2 border w-full rounded dark:bg-black dark:border-gray-800">
+                <div class="p-2 border w-full rounded dark:bg-gray-900 dark:border-gray-800">
                     <div @click="handleTopics('all')" :class="{ 'bg-primary': selectedTopics.length === 0 }"
                         class="inline cursor-pointer hover:bg-secondary mx-2 p-1 text-sm rounded">
                         All
