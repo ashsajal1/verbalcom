@@ -66,6 +66,10 @@ const handleTopics = (topic: string) => {
 
 <template>
     <h1 class="text-3xl font-bold text-center mb-4 g-text">Practice vocabulary</h1>
+    
+    <div class="grid place-items-center">
+        Well practiced? <RouterLink class="text-primary p-2 hover:bg-primary hover:text-slate-100 rounded" to="/quiz">Click & play quiz on vocabulary!</RouterLink>
+    </div>
 
     <p class="py-2 text-center font-bold text-lg mb-2">Search or Filter words by specific topics</p>
 
