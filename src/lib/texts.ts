@@ -78,4 +78,58 @@ export const communicationSamples: CommunicationSample[] = [
     category: "Instructional Communication",
     bn: "প্রথমে, ওভেনটি ৩৫০ ডিগ্রি ফারেনহাইট পর্যন্ত গরম করুন। পরের ধাপে, ময়দা এবং চিনি মিশিয়ে নিন।",
   },
+  {
+    id: "11",
+    text: "We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender.",
+    category: "Public Speaking",
+    bn: "আমরা সৈকতে যুদ্ধ করব, আমরা অবতরণস্থলে যুদ্ধ করব, আমরা মাঠে এবং রাস্তায় যুদ্ধ করব, আমরা পাহাড়ে যুদ্ধ করব; আমরা কখনই আত্মসমর্পণ করব না।",
+  },
+  {
+    id: "12",
+    text: "In our small group discussion, we analyzed the impacts of the Industrial Revolution.",
+    category: "Small Group Communication",
+    bn: "আমাদের ছোট দলে আলোচনা করে আমরা শিল্প বিপ্লবের প্রভাব বিশ্লেষণ করেছি।",
+  },
+  {
+    id: "13",
+    text: "The Magna Carta, signed in 1215, laid the foundation for many constitutional principles.",
+    category: "Written Communication",
+    bn: "১২১৫ সালে স্বাক্ষরিত ম্যাগনা কার্টা অনেক সাংবিধানিক নীতির ভিত্তি স্থাপন করেছিল।",
+  },
+  {
+    id: "14",
+    text: "Distinguished guests, it is an honor to address you at this historic event.",
+    category: "Formal Communication",
+    bn: "বিশিষ্ট অতিথিবৃন্দ, এই ঐতিহাসিক অনুষ্ঠানে আপনাদেরকে সম্বোধন করা একটি সম্মানের বিষয়।",
+  },
+  {
+    id: "15",
+    text: "Let's catch up at the usual spot after the lecture.",
+    category: "Informal Communication",
+    bn: "লেকচারের পর চলো পরিচিত জায়গায় দেখা করি।",
+  },
+  {
+    id: "16",
+    text: "Attention everyone: The city will host a historical reenactment this weekend.",
+    category: "Mass Communication",
+    bn: "সকলের দৃষ্টি আকর্ষণ করছি: শহরটি এই সপ্তাহান্তে একটি ঐতিহাসিক পুনঃনির্মাণ আয়োজন করবে।",
+  },
+  {
+    id: "17",
+    text: "Once upon a time, a brave knight embarked on a quest to save his kingdom.",
+    category: "Storytelling",
+    bn: "একদা, এক সাহসী নাইট তার রাজ্যকে বাঁচানোর জন্য একটি অভিযানে যাত্রা করেছিল।",
+  },
+  {
+    id: "18",
+    text: "To persuade the council, the mayor highlighted the benefits of the new policy.",
+    category: "Persuasive Communication",
+    bn: "পরিষদকে বোঝানোর জন্য মেয়র নতুন নীতির সুবিধাগুলি তুলে ধরেন।",
+  },
+  {
+    id: "19",
+    text: "To bake the perfect cake, follow these steps carefully.",
+    category: "Instructional Communication",
+    bn: "পারফেক্ট কেক তৈরি করতে, এই ধাপগুলি মনোযোগ সহকারে অনুসরণ করুন।",
+  },
 ];
