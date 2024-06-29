@@ -4,4 +4,5 @@ export type Vocabulary = {
   category: string;
   explanation?: string;
   example?: string;
+  partsOfSpeech?: string;
 };
