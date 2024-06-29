@@ -117,7 +117,7 @@ const generateQuestions = () => {
     }));
 };
 
-const questions = ref(generateQuestions());
+const questions = ref(generateQuestions().sort(() => 0.5 - Math.random()));
 
 const loadQuestion = () => {
     currentQuestion.value = questions.value[currentQuestionIndex.value];
