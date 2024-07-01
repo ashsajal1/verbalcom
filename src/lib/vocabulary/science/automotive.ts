@@ -203,7 +203,7 @@ export const automotiveVocabularyArray: Vocabulary[] = [
   },
   {
     en: "keyless entry",
-    bn: "কীলেস এন্ট্রি",
+    bn: "চাবিহীন প্রবেশ",
     category: "automotive",
     explanation:
       "A system that allows a driver to unlock or start a vehicle without using a traditional key.",
