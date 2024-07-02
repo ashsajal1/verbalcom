@@ -2,7 +2,8 @@
     <div v-if="feedback !== 'Quiz Finished!'">
         <h1 class="font-bold text-3xl g-text text-center mb-4">Quiz Page</h1>
         <div class="grid place-items-center">
-            Cannot answer well? <RouterLink class="text-primary p-2 hover:bg-primary hover:text-slate-100 rounded" to="/vocabulary">Click & practice vocabulary!</RouterLink>
+            Cannot answer well? <RouterLink class="text-primary p-2 hover:bg-primary hover:text-slate-100 rounded"
+                to="/vocabulary">Click & practice vocabulary!</RouterLink>
         </div>
         <div class="md:px-72" v-if="currentQuestion">
             <div
@@ -26,7 +27,9 @@
 
             <div class="p-2 mt-4" v-motion-pop v-if="currentQuestion.explanation">
                 <span class="g-text font-bold">Explanaiton : </span>
-                {{ currentQuestion.explanation }}
+                {{ currentQuestion.explanation }} <RouterLink :to="`explanation?word=${currentQuestion.word}`">
+                    <span class="text-secondary">See details</span>
+                </RouterLink>
             </div>
             <div class="p-2 mt-1" v-motion-pop v-if="currentQuestion.exampleUsage">
                 <span class="g-text font-bold">Example Sentence : </span>
@@ -47,7 +50,7 @@
         </div>
     </div>
 
-    
+
 </template>
 
 <script lang="ts" setup>
@@ -57,6 +60,7 @@ import type { Vocabulary } from '@/lib/vocabulary/types';
 import Button from '@/components/Button.vue';
 import { Check, X, Volume1 } from 'lucide-vue-next';
 import { useSpeechSynthesis } from '@vueuse/core';
+import { computed } from 'vue';
 
 const speakSentence = (word: string) => {
     const {
@@ -111,6 +115,7 @@ const generateQuestions = () => {
     return vocabulary.map(word => ({
         question: `What is the meaning of ${word.en}?`,
         answer: word.bn,
+        word: word.en,
         explanation: word.explanation,
         exampleUsage: word.example,
         options: generateRandomOptions(word.bn, vocabulary)
