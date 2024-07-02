@@ -19,7 +19,7 @@ const words = computed(() => {
             selectedTopics.value.includes(word.category);
 
         return matchesSearch && matchesTopics;
-    });
+    }).sort(() => 0.5 - Math.random());
 });
 
 const playWord = (word: string) => {
