@@ -89,12 +89,12 @@ const handleTopics = (topic: string) => {
             <div>
                 <div class="p-2 border w-full flex flex-wrap rounded dark:bg-gray-900 dark:border-gray-800">
                     <div @click="handleTopics('all')" :class="{ 'bg-primary': selectedTopics.length === 0 }"
-                        class="inline cursor-pointer hover:bg-secondary mx-2 p-1 text-sm rounded">
+                        class="inline cursor-pointer hover:text-white hover:bg-secondary mx-2 p-1 text-sm rounded">
                         All
                     </div>
 
                     <div @click="handleTopics(topic)" :class="{ 'bg-primary': selectedTopics.includes(topic) }"
-                        class="inline cursor-pointer hover:bg-secondary mx-2 p-1 text-sm rounded"
+                        class="inline cursor-pointer hover:bg-secondary mx-2 p-1 text-sm rounded hover:text-white"
                         v-for="topic in availableTopics" :key="topic" :value="topic">
                         {{ topic }}
                     </div>
