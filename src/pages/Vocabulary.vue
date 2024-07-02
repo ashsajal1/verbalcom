@@ -3,7 +3,7 @@ import { vocabulary } from '@/lib/vocabulary';
 import { Volume2 } from 'lucide-vue-next';
 import Button from '@/components/Button.vue'
 import { useSpeechSynthesis } from '@vueuse/core'
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 
 const searchedWord = ref('');
 const selectedTopics = ref<string[]>([]);
@@ -21,13 +21,6 @@ const words = computed(() => {
         return matchesSearch && matchesTopics;
     });
 });
-
-watch(
-    words,
-    async (newWords) => {
-        console.log("Words are : ", newWords)
-    },
-);
 
 const playWord = (word: string) => {
     const {
