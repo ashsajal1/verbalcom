@@ -117,7 +117,7 @@ const handleTopics = (topic: string) => {
     <div class="flex gap-2 flex-col">
         <div class="flex items-center justify-between p-3 gap-2 rounded border dark:border-gray-800"
             v-for="(item, index) in words" :key="index">
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
                 <Button @click="playWordWithoutAlert(`${item.en}`)" variant="ghost">
                     <div>{{ item.en }}</div>
                 </Button>
