@@ -157,7 +157,7 @@ const handleTopics = (topic: string) => {
             >Explanation</Button
           >
         </RouterLink>
-        <Button @click="playWord(`[${item.en}, ${item.bn}]`)" variant="ghost">
+        <Button @click="playWord([item.en, item.bn])" variant="ghost">
           <Volume2 />
         </Button>
       </div>
