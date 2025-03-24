@@ -104,7 +104,7 @@ const handleSearch = () => {
         >
           <form
             @submit.prevent="handleSearch()"
-            class="border bg-white dark:bg-black dark:border-gray-700 rounded p-2 flex items-center"
+            class="border bg-white dark:bg-black dark:border-gray-700 focus-within:border-none rounded p-2 flex items-center"
           >
             <input
               v-model="searchText"
