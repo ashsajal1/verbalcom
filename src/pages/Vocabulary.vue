@@ -26,25 +26,30 @@ const words = computed(() => {
     .sort(() => 0.5 - Math.random());
 });
 
-const playWord = (words: string[]) => {
+const playWord = async (words: string[]) => {
   const { isSupported, speak } = useSpeechSynthesis(words[0]);
 
   if (!isSupported) {
     alert("Speech Synthesis is not supported in your browser!");
+    return;
   }
 
+  // Play first word
   speak();
 
+  // Calculate duration based on word length (roughly 100ms per character)
+  const duration = words[0].length * 100;
+
+  // Play second word after the first one finishes
   if (words.length > 1) {
-    setTimeout(() => {
-      playWordWithoutAlert(words[1]);
-    }, 1000);
+    await new Promise((resolve) => setTimeout(resolve, duration));
+    playWordWithoutAlert(words[1]);
   }
 };
+
 const playWordWithoutAlert = (word: string) => {
   const { isSupported, speak } = useSpeechSynthesis(word);
-
-  speak();
+  if (isSupported) speak();
 };
 
 const handleTopics = (topic: string) => {
